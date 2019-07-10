@@ -6,7 +6,7 @@ import history from '../history';
 import FrontPage from './FrontPage';
 import Header from './Header';
 import ProgramList from './programs/ProgramList';
-import ExerciseList from './exercises/ExerciseList';
+import Exercises from './exercises/Exercises';
 import WorkoutList from './workouts/WorkoutList';
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={FrontPage} />
           <Route path="/programs" exact component={ProgramList} />
-          <Route path="/exercises" exact component={ExerciseList} />
+          <Route path="/exercises" exact component={Exercises} />
           <Route path="/workouts" exact component={WorkoutList} />
         </Switch>
       </Router>
