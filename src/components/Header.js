@@ -1,44 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const Header = () => {
   return (
     <Row>
       <Col>
-        <Link to="/">
-          <p>LOGO</p>
-        </Link>
-      </Col>   
-      <Col>
-        <Link to="/programs">
-          <p>Programs</p>
-        </Link>
+        <Link to="/">HOME</Link>
       </Col>
       <Col>
-        <Link to="/exercises">
-          <p>Exercises</p>
-        </Link>
+        <Link to="/programs">Programs</Link>
       </Col>
       <Col>
-        <Link to="/workouts">
-          <p>Workouts</p>
-        </Link>
+        <Link to="/exercises">Exercises</Link>
       </Col>
       <Col>
-        <Link to="/">
-          <p>Profile</p>
-        </Link>
-      </Col>
-      <Col>
-        <Link to="/">
-          <p>Logout</p>
-        </Link>
+        <Link to="/workouts">Workouts</Link>
       </Col>
     </Row>
   );
 };
+
+
 
 export default Header;
 

@@ -13,3 +13,17 @@ export const fetchExercises = () => async dispatch => {
 
   dispatch({ type: 'FETCH_EXERCISES', payload: response.data })
 };
+
+export const fetchPrograms = () => async dispatch => {
+  const response = await api.get('/programs');
+
+  dispatch({ type: 'FETCH_PROGRAMS', payload: response.data })
+};
+
+export const createProgram = (formValues) => async (dispatch) => {
+  console.log(formValues);
+  const response = await api.post('/programs', { ...formValues });
+
+  dispatch({ type: 'CREATE_PROGRAM', payload: response.data });
+  dispatch(reset('programForm'));
+};

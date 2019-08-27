@@ -5,7 +5,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import history from '../history';
 import FrontPage from './FrontPage';
 import Header from './Header';
-import ProgramList from './programs/ProgramList';
+import Programs from './programs/Programs';
 import Exercises from './exercises/Exercises';
 import WorkoutList from './workouts/WorkoutList';
 
@@ -16,7 +16,7 @@ const App = () => {
         <Header />
         <Switch>
           <Route path="/" exact component={FrontPage} />
-          <Route path="/programs" exact component={ProgramList} />
+          <Route path="/programs" exact component={Programs} />
           <Route path="/exercises" exact component={Exercises} />
           <Route path="/workouts" exact component={WorkoutList} />
         </Switch>
