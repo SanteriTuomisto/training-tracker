@@ -7,16 +7,16 @@ const Header = () => {
   return (
     <Row>
       <Col>
-        <Link to="/">HOME</Link>
+        <Link to="/"><h3>HOME</h3></Link>
       </Col>
       <Col>
-        <Link to="/programs">Programs</Link>
+        <Link to="/programs"><h3>Programs</h3></Link>
       </Col>
       <Col>
-        <Link to="/exercises">Exercises</Link>
+        <Link to="/exercises"><h3>Exercises</h3></Link>
       </Col>
       <Col>
-        <Link to="/workouts">Workouts</Link>
+        <Link to="/workouts"><h3>Workouts</h3></Link>
       </Col>
     </Row>
   );

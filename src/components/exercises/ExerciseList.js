@@ -3,10 +3,15 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card'
 import Badge from 'react-bootstrap/Badge'
 import { fetchExercises } from '../../actions';
 import { connect } from 'react-redux';
+
+const exerciseBoxStyle = {
+  border: '1px solid gray',
+  padding: '10px',
+  margin: '5px'
+}
 
 class ExerciseList extends React.Component {
   state = { selectedCategories: [] }; 
@@ -50,13 +55,22 @@ class ExerciseList extends React.Component {
     return this.props.exercises.map(exercise => {
       if (this.state.selectedCategories.length === 0 || this.state.selectedCategories.includes(exercise.category)) {
         return (
-          <Col sm={4} key={exercise.id}>
-            <Card>
-              <Card.Body>
-                <Card.Title>{exercise.title} <Badge variant="secondary">{exercise.category}</Badge></Card.Title>
-                <Card.Text>{exercise.description}</Card.Text>
-              </Card.Body>
-            </Card>
+          <Col sm={3} key={exercise.id} style={exerciseBoxStyle}>
+            <h3>
+              {exercise.title} 
+              <Badge variant="secondary">{exercise.category}</Badge>
+            </h3>
+            <p>
+              {exercise.description} 
+            </p>
+            <Row>
+              <Col sm={6}>
+                <Button variant="danger">Delete</Button>
+              </Col>
+              <Col sm={6}>
+                <Button variant="primary">Edit</Button> 
+              </Col>
+            </Row>                                
           </Col>
         );
       }

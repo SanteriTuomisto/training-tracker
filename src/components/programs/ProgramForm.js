@@ -1,8 +1,18 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { ReduxFormSelect } from '../helpers/ReduxFormSelect';
+
 
 class ProgramForm extends React.Component {
 
+  options = [];
+
+  componentDidMount() {
+    for(var i = 0; i < this.props.exercises.length; i++) {
+      var obj = { value: this.props.exercises[i].id, label: this.props.exercises[i].title };
+      this.options.push(obj);
+    }
+  }
 
   renderError({ error, touched }) {
     if (touched && error) {
@@ -37,6 +47,8 @@ class ProgramForm extends React.Component {
       <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
         <Field name="title" component={this.renderInput} label="Enter Title" />
         <Field name="description" component={this.renderInput} label="Enter Description" />
+        <label>Exercises</label>
+        <Field name="exercises" component={ReduxFormSelect} options={this.options} />
         <button className="ui button primary">Submit</button>
       </form>
     );

@@ -27,17 +27,18 @@ class ProgramList extends React.Component {
           <Row>
             <Col sm={9}>
               <h3>{program.title}</h3>
-                {program.description}
+                <p>
+                  {program.description}
+                </p>
+                <Row>
+                  {this.renderExercises(program.exercises)}
+                </Row>
             </Col>
             <Col sm={3}>
               <Button variant="primary" style={programButtonStyle}>View</Button>
               <Button variant="primary" style={programButtonStyle}>Edit</Button>             
-            </Col>
-            <Col sm={12}>
-              <Row>
-                {this.renderExercises(program.exercises)}
-              </Row>
-            </Col>                
+              <Button variant="danger" style={programButtonStyle}>Delete</Button>             
+            </Col>               
           </Row>
         </Col>
       );
@@ -47,9 +48,9 @@ class ProgramList extends React.Component {
   renderExercises(exercises) {
     if(exercises !== undefined) {
       return this.props.exercises.map(exercise => {
-        if (exercises.some(ex => ex === exercise.id)) {
+        if (exercises.some(ex => ex.value === exercise.id)) {
           return (
-            <Col sm={4} key={exercise.id}>
+            <Col sm={3} key={exercise.id}>
               <h4>{exercise.title}</h4>
             </Col>
           );

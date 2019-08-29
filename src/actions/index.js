@@ -21,7 +21,6 @@ export const fetchPrograms = () => async dispatch => {
 };
 
 export const createProgram = (formValues) => async (dispatch) => {
-  console.log(formValues);
   const response = await api.post('/programs', { ...formValues });
 
   dispatch({ type: 'CREATE_PROGRAM', payload: response.data });

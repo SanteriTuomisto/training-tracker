@@ -12,7 +12,15 @@ const FrontPage = () => {
         This is a simple hero unit, a simple jumbotron-style component for calling
         extra attention to featured content or information.
       </p>
-      <Row>
+      
+    </Jumbotron>
+  );
+};
+
+export default FrontPage;
+
+/*
+<Row>
         <Col>
           <Button variant="outline-primary" size="lg">Login</Button>
         </Col>
@@ -20,8 +28,4 @@ const FrontPage = () => {
           <Button variant="success" size="lg">Sign up</Button>        
         </Col>
       </Row>
-    </Jumbotron>
-  );
-};
-
-export default FrontPage;
+      */

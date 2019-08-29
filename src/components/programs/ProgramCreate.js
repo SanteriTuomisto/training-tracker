@@ -1,9 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ProgramForm from './ProgramForm';
-import { createProgram } from '../../actions';
+import { createProgram, fetchExercises } from '../../actions';
 
 class ProgramCreate extends React.Component {
+  componentDidMount() {
+    this.props.fetchExercises();    
+  }
+
   onSubmit = (formValues) => {
     this.props.createProgram(formValues);
   }
@@ -12,10 +16,16 @@ class ProgramCreate extends React.Component {
     return (
       <div>
         <h3>Add new program</h3>
-        <ProgramForm onSubmit={this.onSubmit} />
+        <ProgramForm onSubmit={this.onSubmit} exercises={this.props.exercises} />
       </div>
     );
   }
 }
 
-export default connect(null, { createProgram })(ProgramCreate)
+const mapStateToProps = (state) => {
+  return {
+    exercises: Object.values(state.exercises)
+  };
+};
+
+export default connect(mapStateToProps, { createProgram, fetchExercises })(ProgramCreate)
