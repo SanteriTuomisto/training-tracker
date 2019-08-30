@@ -7,7 +7,7 @@ import FrontPage from './FrontPage';
 import Header from './Header';
 import Programs from './programs/Programs';
 import Exercises from './exercises/Exercises';
-import WorkoutList from './workouts/WorkoutList';
+import Workouts from './workouts/Workouts';
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
           <Route path="/" exact component={FrontPage} />
           <Route path="/programs" exact component={Programs} />
           <Route path="/exercises" exact component={Exercises} />
-          <Route path="/workouts" exact component={WorkoutList} />
+          <Route path="/workouts" exact component={Workouts} />
         </Switch>
       </Router>
     </Container>

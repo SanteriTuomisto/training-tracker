@@ -1,25 +1,26 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { Input, Button, Label } from '../helpers/StyledComponents';
 
 class ExerciseForm extends React.Component {
 
   renderError({ error, touched }) {
     if (touched && error) {
       return (
-        <div className="ui error message">
-          <div className="header">{error}</div>
+        <div>
+          <div>{error}</div>
         </div>
       );
     }
   }
 
   renderInput = ({ input, label, meta }) => {
-    const className = `field ${meta.error && meta.touched ? 'error' : ''}`
+    //const className = `field ${meta.error && meta.touched ? 'error' : ''}`
 
     return (
-      <div className={className}>
-        <label>{label}</label>
-        <input {...input} autoComplete="off" />
+      <div>
+        <Label>{label}</Label>
+        <Input {...input} autoComplete="off" />
         {this.renderError(meta)}
       </div>
     );  
@@ -35,7 +36,7 @@ class ExerciseForm extends React.Component {
         <Field name="title" component={this.renderInput} label="Enter Title" />
         <Field name="category" component={this.renderInput} label="Enter Category" />
         <Field name="description" component={this.renderInput} label="Enter Description" />
-        <button className="ui button primary">Submit</button>
+        <Button primary>Submit</Button>
       </form>
     );
   }

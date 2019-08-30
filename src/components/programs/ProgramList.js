@@ -3,15 +3,7 @@ import { fetchPrograms, fetchExercises } from '../../actions';
 import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-
-const programBoxStyle = {
-  padding: '15px'
-}
-
-const programButtonStyle = {
-  margin: '7px'
-}
+import { Button, Container } from '../helpers/StyledComponents';
 
 class ProgramList extends React.Component {
   componentDidMount() {
@@ -22,24 +14,25 @@ class ProgramList extends React.Component {
   renderProgramList() {
     return this.props.programs.map(program => {
       return (
-        <Col sm={12} key={program.id} style={programBoxStyle}>
-          <hr />
-          <Row>
-            <Col sm={9}>
-              <h3>{program.title}</h3>
-                <p>
-                  {program.description}
-                </p>
-                <Row>
-                  {this.renderExercises(program.exercises)}
-                </Row>
-            </Col>
-            <Col sm={3}>
-              <Button variant="primary" style={programButtonStyle}>View</Button>
-              <Button variant="primary" style={programButtonStyle}>Edit</Button>             
-              <Button variant="danger" style={programButtonStyle}>Delete</Button>             
-            </Col>               
-          </Row>
+        <Col sm={12} key={program.id}>
+          <Container> 
+            <Row>
+              <Col sm={9}>
+                <h3>{program.title}</h3>
+                  <p>
+                    {program.description}
+                  </p>
+                  <Row>
+                    {this.renderExercises(program.exercises)}
+                  </Row>
+              </Col>
+              <Col sm={3}>
+                <Button>View</Button>
+                <Button>Edit</Button>             
+                <Button primary>Delete</Button>             
+              </Col>               
+            </Row>
+          </Container>
         </Col>
       );
     });
@@ -51,7 +44,7 @@ class ProgramList extends React.Component {
         if (exercises.some(ex => ex.value === exercise.id)) {
           return (
             <Col sm={3} key={exercise.id}>
-              <h4>{exercise.title}</h4>
+              <h5>{exercise.title}</h5>
             </Col>
           );
         }
@@ -68,7 +61,7 @@ class ProgramList extends React.Component {
   render() {
     return (
       <div>
-        <h4>Programs:</h4>
+        <h2>Your Programs:</h2>
         <Row>
           {this.renderProgramList()}
         </Row>

@@ -1,28 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Button } from './helpers/StyledComponents';
 
-const Header = () => {
-  return (
-    <Row>
-      <Col>
-        <Link to="/"><h3>HOME</h3></Link>
-      </Col>
-      <Col>
-        <Link to="/programs"><h3>Programs</h3></Link>
-      </Col>
-      <Col>
-        <Link to="/exercises"><h3>Exercises</h3></Link>
-      </Col>
-      <Col>
-        <Link to="/workouts"><h3>Workouts</h3></Link>
-      </Col>
-    </Row>
-  );
+class Header extends React.Component {
+  render() {
+    return (
+      <Row>
+        <Link to="/"><Button>HOME</Button></Link>
+        <Link to="/programs"><Button>Programs</Button></Link>
+        <Link to="/exercises"><Button>Exercises</Button></Link>
+        <Link to="/workouts"><Button>Workouts</Button></Link>
+      </Row>
+    );
+  }
+
 };
-
-
 
 export default Header;
 

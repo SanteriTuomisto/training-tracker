@@ -1,7 +1,7 @@
 import React from 'react';
 import ProgramList from './ProgramList';
-import Button from 'react-bootstrap/Button';
 import ProgramCreate from './ProgramCreate';
+import { Button, Header, Container, Line } from '../helpers/StyledComponents';
 
 class Programs extends React.Component {
   state = { show: false }
@@ -18,24 +18,31 @@ class Programs extends React.Component {
   renderCreate() {
     if (this.state.show) {
       return (
-        <div>
-          <Button variant="secondary" onClick={() => this.updateState()}>Close</Button>
-          <ProgramCreate onSubmitPress={this.updateState} />
+        <div>          
+          <Container>
+            <Button onClick={() => this.updateState()}>Close</Button>
+            <ProgramCreate onSubmitPress={this.updateState} />
+          </Container>
         </div>
       );
     }
     else {
-      return <Button variant="primary" onClick={() => this.updateState()}>Add Program</Button>
+      return (
+        <div>          
+          <Button primary onClick={() => this.updateState()}>Add Program</Button>
+        </div>
+      );
     }
   }
 
   render() {
     return (
-      <div>
-        <h1>Programs</h1>
+      <Container>
+        <Header>Programs</Header>
         {this.renderCreate()}
+        <Line />
         <ProgramList />
-      </div>  
+      </Container>  
       );
   }
 }

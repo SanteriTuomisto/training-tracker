@@ -1,31 +1,41 @@
 import React from 'react';
-import Jumbotron from 'react-bootstrap/Jumbotron'
-import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { Button, Container, Header, Line } from './helpers/StyledComponents';
+import { Link } from 'react-router-dom';
 
 const FrontPage = () => {
   return (
-    <Jumbotron>
-      <h1>Training Tracker</h1>
-      <p>
-        This is a simple hero unit, a simple jumbotron-style component for calling
-        extra attention to featured content or information.
-      </p>
-      
-    </Jumbotron>
-  );
+    <Container>
+      <Header>Training Tracker</Header>
+      <Row>
+        <Col>
+          <Button>Login</Button>
+        </Col>
+        <Col>
+          <Button primary>Sign up</Button>        
+        </Col>
+      </Row>
+      <Line />
+      <Row>
+        <Col>
+          <Link to="/programs">
+            <Button variant="outline-primary" size="lg">Programs</Button>
+          </Link>
+        </Col>
+        <Col>
+          <Link to="/exercises">
+            <Button variant="outline-primary" size="lg">Exercises</Button>
+          </Link>      
+        </Col>
+        <Col>
+          <Link to="/workouts">
+            <Button variant="outline-primary" size="lg">Workouts</Button>
+          </Link>      
+        </Col>
+      </Row>
+    </Container>
+    );
 };
 
 export default FrontPage;
-
-/*
-<Row>
-        <Col>
-          <Button variant="outline-primary" size="lg">Login</Button>
-        </Col>
-        <Col>
-          <Button variant="success" size="lg">Sign up</Button>        
-        </Col>
-      </Row>
-      */

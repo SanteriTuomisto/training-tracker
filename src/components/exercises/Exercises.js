@@ -1,7 +1,7 @@
 import React from 'react';
 import ExerciseList from './ExerciseList';
 import ExerciseCreate from './ExerciseCreate';
-import Button from 'react-bootstrap/Button'
+import { Button, Container, Line, Header } from '../helpers/StyledComponents';
 
 class Exercises extends React.Component {
   state = { show: false }
@@ -18,24 +18,25 @@ class Exercises extends React.Component {
   renderCreate() {
     if (this.state.show) {
       return (
-        <div>
-          <Button variant="secondary" onClick={() => this.updateState()}>Close</Button>
+        <Container>
+          <Button onClick={() => this.updateState()}>Close</Button>
           <ExerciseCreate onSubmitPress={this.updateState} />
-        </div>
+        </Container>
       );
     }
     else {
-      return <Button variant="primary" onClick={() => this.updateState()}>Add Exercise</Button>
+      return <Button primary onClick={() => this.updateState()}>Add Exercise</Button>
     }
   }
 
   render() {
     return (
-      <div>
-        <h1>Exercises</h1>
+      <Container>
+        <Header>Exercises</Header>
         {this.renderCreate()}
+        <Line />
         <ExerciseList />
-      </div>
+      </Container>
     );
   }
 }
