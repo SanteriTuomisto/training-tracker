@@ -39,8 +39,8 @@ class Programs extends React.Component {
     return (
       <Container>
         <Header>Programs</Header>
-        {this.renderCreate()}
         <Line />
+        {this.renderCreate()}
         <ProgramList />
       </Container>  
       );

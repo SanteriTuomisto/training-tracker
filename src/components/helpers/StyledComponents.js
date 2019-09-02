@@ -12,10 +12,12 @@ export const Button = styled.button`
 
 export const Badge = styled.div`
   background: ${props => props.primary ? "white" : "transparent"};
-  color: ${props => props.primary ? "palevioletred" : "white"};
+  color: ${props => props.primary ? "palevioletred" : "black"};
   font-size: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid white;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border: 2px solid black;
+  text-align: center;
   border-radius: 3px;
 `;
 
@@ -44,7 +46,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.h1`
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: black;
 `;
 

@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { fetchExercises } from '../../actions';
 import { connect } from 'react-redux';
-import { Button, Container, Badge, Input } from '../helpers/StyledComponents';
+import { Button, Container, Badge, Input, Line } from '../helpers/StyledComponents';
 
 class ExerciseList extends React.Component {
   state = { 
@@ -61,25 +61,25 @@ class ExerciseList extends React.Component {
             <Col sm={4} key={exercise.id}>
               <Container>
                 <Row>
-                  <Col sm={8}>
+                  <Col md={12} lg={8}>
                     <h4>{exercise.title}</h4>
                   </Col>
-                  <Col sm={4}>       
+                  <Col md={12} lg={4}>       
                     <Badge>
                     {exercise.category}
                     </Badge>
                   </Col>
-                  <h3>
-                  </h3>
                 </Row>
+                <Line />
                 <p>
                   {exercise.description} 
                 </p>
+                <Line />
                 <Row>
-                  <Col sm={6}>
+                  <Col md={12} lg={6}>
                     <Button primary>Delete</Button>
                   </Col>
-                  <Col sm={6}>
+                  <Col md={12} lg={6}>
                     <Button>Edit</Button> 
                   </Col>
                 </Row>
@@ -100,20 +100,20 @@ class ExerciseList extends React.Component {
   render() {
     return (
       <div>
-        <h2>Your Exercises:</h2>
-        <Row>
-          <Col sm={6}>
-            <h4>Sort exercises by category:</h4>
-            <ButtonGroup aria-label="Categories">
-              {this.renderCategoriesList()}
-            </ButtonGroup>
-          </Col>
-          <Col sm={6}>
-            <h4>Search exercises:</h4>
-            <Input type="text" placeholder="Search..." onChange={this.search} value={this.state.search} />
-          </Col>
-        </Row>
-        <hr />
+        <Container>
+          <Row>
+            <Col md={12} lg={6}>
+              <h4>Sort exercises by category:</h4>
+              <ButtonGroup aria-label="Categories">
+                {this.renderCategoriesList()}
+              </ButtonGroup>
+            </Col>
+            <Col md={12} lg={6}>
+              <h4>Search exercises:</h4>
+              <Input type="text" placeholder="Search..." onChange={this.search} value={this.state.search} />
+            </Col>
+          </Row>
+        </Container>
         <Row>
           {this.renderExerciseList()}
         </Row>

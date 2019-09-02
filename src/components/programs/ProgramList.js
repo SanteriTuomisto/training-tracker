@@ -3,7 +3,7 @@ import { fetchPrograms, fetchExercises } from '../../actions';
 import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Button, Container } from '../helpers/StyledComponents';
+import { Button, Container, Line } from '../helpers/StyledComponents';
 
 class ProgramList extends React.Component {
   componentDidMount() {
@@ -19,6 +19,7 @@ class ProgramList extends React.Component {
             <Row>
               <Col sm={9}>
                 <h3>{program.title}</h3>
+                <Line />
                   <p>
                     {program.description}
                   </p>
@@ -61,7 +62,6 @@ class ProgramList extends React.Component {
   render() {
     return (
       <div>
-        <h2>Your Programs:</h2>
         <Row>
           {this.renderProgramList()}
         </Row>

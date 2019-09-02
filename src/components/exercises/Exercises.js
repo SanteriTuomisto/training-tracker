@@ -33,8 +33,8 @@ class Exercises extends React.Component {
     return (
       <Container>
         <Header>Exercises</Header>
-        {this.renderCreate()}
         <Line />
+        {this.renderCreate()}
         <ExerciseList />
       </Container>
     );
