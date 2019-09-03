@@ -1,15 +1,15 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Input, Button, Label } from '../helpers/StyledComponents';
+import { Input, Button, Label, Error } from '../helpers/StyledComponents';
 
 class ExerciseForm extends React.Component {
 
   renderError({ error, touched }) {
     if (touched && error) {
       return (
-        <div>
-          <div>{error}</div>
-        </div>
+        <Error>
+          {error}
+        </Error>
       );
     }
   }

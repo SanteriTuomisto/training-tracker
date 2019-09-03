@@ -8,6 +8,7 @@ export const Button = styled.button`
   padding: 0.25em 1em;
   border: 2px solid black;
   border-radius: 3px;
+  float: ${props => props.right ? "right" : ""};
 `;
 
 export const Badge = styled.div`
@@ -40,7 +41,7 @@ export const Input = styled.input`
 export const Container = styled.div`
   margin-top: 20px;
   padding: 20px;
-  border-radius: 3px;
+  border-radius: 6px;
   border: 2px solid white;
   box-shadow: rgba(0, 0, 0, 0.17) 0px 2px 20px;
 `;
@@ -52,4 +53,14 @@ export const Header = styled.h1`
 
 export const Line = styled.hr`
   border: 1px solid black;
+`;
+
+export const Error = styled.div`
+  background: white;
+  color: red;
+  font-size: 1em;
+  margin: 5px;
+  padding: 0.25em 1em;
+  border: 2px solid red;
+  border-radius: 3px;
 `;

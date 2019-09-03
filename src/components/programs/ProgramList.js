@@ -17,7 +17,7 @@ class ProgramList extends React.Component {
         <Col sm={12} key={program.id}>
           <Container> 
             <Row>
-              <Col sm={9}>
+              <Col lg={10} sm={9}>
                 <h3>{program.title}</h3>
                 <Line />
                   <p>
@@ -27,10 +27,10 @@ class ProgramList extends React.Component {
                     {this.renderExercises(program.exercises)}
                   </Row>
               </Col>
-              <Col sm={3}>
-                <Button>View</Button>
-                <Button>Edit</Button>             
-                <Button primary>Delete</Button>             
+              <Col lg={2} sm={3}>
+                <Button right>View</Button>
+                <Button right>Edit</Button>             
+                <Button right primary>Delete</Button>             
               </Col>               
             </Row>
           </Container>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { ReduxFormSelect } from '../helpers/ReduxFormSelect';
-import { Button, Input, Label } from '../helpers/StyledComponents';
+import { Button, Input, Label, Error } from '../helpers/StyledComponents';
 
 class ProgramForm extends React.Component {
 
@@ -17,11 +17,9 @@ class ProgramForm extends React.Component {
   renderError({ error, touched }) {
     if (touched && error) {
       return (
-        <div>
-          <div>
-            {error}
-          </div>
-        </div>
+        <Error>
+          {error}
+        </Error>
       );
     }
   }

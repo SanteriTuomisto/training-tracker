@@ -8,6 +8,7 @@ const FrontPage = () => {
   return (
     <Container>
       <Header>Training Tracker</Header>
+      <Line />
       <Row>
         <Col>
           <Button>Login</Button>
