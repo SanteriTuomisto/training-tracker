@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { ReduxFormSelect } from '../helpers/ReduxFormSelect';
-import { Button, Input, Label, Error } from '../helpers/StyledComponents';
+import { Button, Input, Label, Error } from '../StyledComponents';
 
 class ProgramForm extends React.Component {
 

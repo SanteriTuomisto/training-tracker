@@ -4,7 +4,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { fetchExercises } from '../../actions';
 import { connect } from 'react-redux';
-import { Button, Container, Badge, Input, Line } from '../helpers/StyledComponents';
+import { Button, Container, Badge, Input, Line } from '../StyledComponents';
+import { FaTrashAlt } from "react-icons/fa";
 
 class ExerciseList extends React.Component {
   state = { 
@@ -76,10 +77,10 @@ class ExerciseList extends React.Component {
                 </p>
                 <Line />
                 <Row>
-                  <Col md={12} lg={6}>
-                    <Button primary>Delete</Button>
+                  <Col md={6} lg={6}>
+                    <Button primary><FaTrashAlt /></Button>
                   </Col>
-                  <Col md={12} lg={6}>
+                  <Col md={6} lg={6}>
                     <Button>Edit</Button> 
                   </Col>
                 </Row>

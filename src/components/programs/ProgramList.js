@@ -3,7 +3,8 @@ import { fetchPrograms, fetchExercises } from '../../actions';
 import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Button, Container, Line } from '../helpers/StyledComponents';
+import { Button, Container, Line } from '../StyledComponents';
+import { FaTrashAlt } from "react-icons/fa";
 
 class ProgramList extends React.Component {
   componentDidMount() {
@@ -25,12 +26,12 @@ class ProgramList extends React.Component {
                   </p>
                   <Row>
                     {this.renderExercises(program.exercises)}
+                    <Button right>View</Button>
                   </Row>
               </Col>
               <Col lg={2} sm={3}>
-                <Button right>View</Button>
                 <Button right>Edit</Button>             
-                <Button right primary>Delete</Button>             
+                <Button right primary><FaTrashAlt /></Button>             
               </Col>               
             </Row>
           </Container>

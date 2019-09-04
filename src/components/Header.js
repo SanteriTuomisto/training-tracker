@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
-import { Button } from './helpers/StyledComponents';
+import { Button } from './StyledComponents';
 
 class Header extends React.Component {
   render() {

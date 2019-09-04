@@ -1,18 +1,28 @@
 const initialData = {
-    tasks: {
-        'task-1': { id: 'task-1', content: 'Bench press' },
-        'task-2': { id: 'task-2', content: 'Squat' },
-        'task-3': { id: 'task-3', content: 'Deadlift' },
-        'task-4': { id: 'task-4', content: 'Pull up' }
+    exercises: {
+        1: { id: 1, content: 'Bench press' },
+        2: { id: 2, content: 'Squat' },
+        3: { id: 3, content: 'Deadlift' },
+        4: { id: 4, content: 'Pull up' }
     },
-    columns: {
-        'column-1': {
-            id: 'column-1',
-            title: 'Program',
-            taskIds: ['task-1', 'task-2', 'task-3', 'task-4']
+    workouts: {
+        1: {
+            id: 1,
+            title: 'Workout 1',
+            exerciseIds: [1, 2, 3, 4]
+        },
+        2: {
+            id: 2,
+            title: 'Workout 2',
+            exerciseIds: []
+        },
+        3: {
+            id: 3,
+            title: 'Workout 3',
+            exerciseIds: []
         }
     },
-    columnOrder: ['column-1']
+    columnOrder: [1, 2, 3]
 };
 
 export default initialData;

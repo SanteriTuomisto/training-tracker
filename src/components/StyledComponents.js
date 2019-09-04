@@ -9,6 +9,11 @@ export const Button = styled.button`
   border: 2px solid black;
   border-radius: 3px;
   float: ${props => props.right ? "right" : ""};
+
+  &:hover {
+    background: ${props => props.primary ? "#292929" : "#f5f5f5"};
+    transition: background 0.2s ease;
+  }
 `;
 
 export const Badge = styled.div`
@@ -34,6 +39,7 @@ export const Input = styled.input`
   border-radius: 3px;
   border: 2px solid black;
   margin: 5px;
+  padding-left: 20px;
   box-shadow: rgba(0, 0, 0, 0.17) 0px 2px 20px;
   width: 100%;
 `;
@@ -44,6 +50,43 @@ export const Container = styled.div`
   border-radius: 6px;
   border: 2px solid white;
   box-shadow: rgba(0, 0, 0, 0.17) 0px 2px 20px;
+  background-color: ${props => (props.isDragging ? 'lightgreen' : '' )}; 
+`;
+
+export const ContainerDrobbable = styled(Container)`
+  background-color: ${props => (props.isDraggingOver ? 'lightblue' : '' )}; 
+  padding-top: 0px;
+  padding-bottom: 20px;
+  box-shadow: none;
+  padding-left: 5px;
+  padding-right: 5px;
+  min-height: 150px;
+`;
+
+export const ContainerDraggable = styled(Container)`
+  background-color: ${props => (props.isDraggingOver ? 'lightblue' : '' )}; 
+  cursor: grab;
+`;
+
+export const ContainerColumn = styled(Container)`
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-bottom: 2px;
+`;
+
+export const ContainerAddNew= styled(Container)`
+  background-color: #dadada;
+  cursor: pointer;
+  color: white;
+  padding: 0px;
+  padding-bottom: 10px;
+  border: none;
+  box-shadow: none;
+
+  &:hover {
+    background-color: #e8e8e8;
+    transition: background 0.5s ease;
+  }
 `;
 
 export const Header = styled.h1`
@@ -63,4 +106,10 @@ export const Error = styled.div`
   padding: 0.25em 1em;
   border: 2px solid red;
   border-radius: 3px;
+`;
+
+export const Icon = styled.div`
+  margin-top: 0px;
+  font-size: 50px;
+  text-align: center;
 `;

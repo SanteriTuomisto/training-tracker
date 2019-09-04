@@ -1,7 +1,7 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Button, Container, Header, Line } from './helpers/StyledComponents';
+import { Button, Container, Header, Line } from './StyledComponents';
 import { Link } from 'react-router-dom';
 
 const FrontPage = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Input, Button, Label, Error } from '../helpers/StyledComponents';
+import { Input, Button, Label, Error } from '../StyledComponents';
 
 class ExerciseForm extends React.Component {
 

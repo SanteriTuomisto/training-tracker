@@ -1,7 +1,8 @@
 import React from 'react';
 import ProgramList from './ProgramList';
-import ProgramCreate from './ProgramCreate';
-import { Button, Header, Container, Line } from '../helpers/StyledComponents';
+import ProgramCreate from './ProgramCreateOld';
+import { Button, Header, Container, Line } from '../StyledComponents';
+import { Link } from 'react-router-dom';
 
 class Programs extends React.Component {
   state = { show: false }
@@ -29,7 +30,7 @@ class Programs extends React.Component {
     else {
       return (
         <div>          
-          <Button primary onClick={() => this.updateState()}>Add Program</Button>
+          <Button primary onClick={() => this.updateState()}>Add Program (OLD)</Button>
         </div>
       );
     }
@@ -40,6 +41,7 @@ class Programs extends React.Component {
       <Container>
         <Header>Programs</Header>
         <Line />
+        <Link to="/program/new"><Button>Create program</Button></Link>
         {this.renderCreate()}
         <ProgramList />
       </Container>  

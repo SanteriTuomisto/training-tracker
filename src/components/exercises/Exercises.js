@@ -1,7 +1,7 @@
 import React from 'react';
 import ExerciseList from './ExerciseList';
 import ExerciseCreate from './ExerciseCreate';
-import { Button, Container, Line, Header } from '../helpers/StyledComponents';
+import { Button, Container, Line, Header } from '../StyledComponents';
 
 class Exercises extends React.Component {
   state = { show: false }
