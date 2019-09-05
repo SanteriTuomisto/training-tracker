@@ -5,7 +5,7 @@ import { Droppable } from 'react-beautiful-dnd';
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { FaTrashAlt } from "react-icons/fa";
 
-export default class Workout extends React.Component {
+class Workout extends React.Component {
     deleteExercise = (exerciseId) => {
         this.props.deleteExercise(this.props.workout.id, exerciseId);
     }
@@ -57,3 +57,5 @@ export default class Workout extends React.Component {
         );
     }
 }
+
+export default Workout;

@@ -2,7 +2,7 @@ import React from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { fetchExercises } from '../../actions';
+import { fetchExercises, deleteExercise } from '../../actions';
 import { connect } from 'react-redux';
 import { Button, Container, Badge, Input, Line } from '../StyledComponents';
 import { FaTrashAlt } from "react-icons/fa";
@@ -17,6 +17,22 @@ class ExerciseList extends React.Component {
     this.props.fetchExercises();
   }
 
+  deleteExercise(id, category) {
+    // remove category from state if selected currently
+    if (this.state.selectedCategories.includes(category)) {
+      const newSelectedCategories = this.state.selectedCategories.filter(item => item !== category);
+
+      const newState = {
+        ...this.state,
+        selectedCategories: newSelectedCategories
+      };
+
+      this.setState(newState);
+    }
+
+    this.props.deleteExercise(id);
+  }
+  
   search = (event) => {
     this.setState({ search: event.target.value });
   }
@@ -78,7 +94,7 @@ class ExerciseList extends React.Component {
                 <Line />
                 <Row>
                   <Col md={6} lg={6}>
-                    <Button primary><FaTrashAlt /></Button>
+                    <Button primary onClick={() => this.deleteExercise(exercise.id, exercise.category)}><FaTrashAlt /></Button>
                   </Col>
                   <Col md={6} lg={6}>
                     <Button>Edit</Button> 
@@ -129,4 +145,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchExercises })(ExerciseList);
+export default connect(mapStateToProps, { fetchExercises, deleteExercise })(ExerciseList);

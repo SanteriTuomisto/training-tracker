@@ -4,8 +4,19 @@ import { Draggable } from 'react-beautiful-dnd';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FaTrashAlt } from "react-icons/fa";
+import Select from 'react-select';
 
-export default class Exercise extends React.Component {
+class Exercise extends React.Component {
+    options = [{ value: '', label: 'Bench Press' },
+    { value: '', label: 'Squat' },
+    { value: '', label: 'Deadlift' }];
+    
+    /*componentDidMount() {
+        for(var i = 0; i < this.props.exercises.length; i++) {
+            var obj = { value: this.props.exercises[i].id, label: this.props.exercises[i].title };
+            this.options.push(obj);
+        }
+    }*/
 
     render() {
         return (
@@ -19,7 +30,9 @@ export default class Exercise extends React.Component {
                     >
                         <Row>
                             <Col md={8}>
-                                <Input placeholder={this.props.exercise.content} />
+                                <Select options={
+                                    this.options
+                                } />
                             </Col>
                             <Col md={4}>
                                 <Button right primary onClick={() => this.props.deleteExercise(this.props.exercise.id)}><FaTrashAlt /></Button>  
@@ -39,3 +52,5 @@ export default class Exercise extends React.Component {
         );
     }
 }
+  
+export default Exercise;

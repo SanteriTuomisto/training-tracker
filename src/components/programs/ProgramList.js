@@ -1,15 +1,16 @@
 import React from 'react';
-import { fetchPrograms, fetchExercises } from '../../actions';
+import { fetchExercises, fetchPrograms, deleteProgram } from '../../actions';
 import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Button, Container, Line } from '../StyledComponents';
 import { FaTrashAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 class ProgramList extends React.Component {
   componentDidMount() {
-    this.props.fetchPrograms();
     this.props.fetchExercises();
+    this.props.fetchPrograms();
   }
 
   renderProgramList() {
@@ -25,13 +26,20 @@ class ProgramList extends React.Component {
                     {program.description}
                   </p>
                   <Row>
-                    {this.renderExercises(program.exercises)}
-                    <Button right>View</Button>
+                    <Button>View</Button>
                   </Row>
               </Col>
               <Col lg={2} sm={3}>
-                <Button right>Edit</Button>             
-                <Button right primary><FaTrashAlt /></Button>             
+                <Link to={{ 
+                    pathname: `/programs/edit/${program.id}`,
+                    state: {
+                      program: program,
+                      edit: true
+                    }             
+                  }}>
+                  <Button right>Edit</Button>
+                </Link>          
+                <Button right primary onClick={() => this.props.deleteProgram(program.id)}><FaTrashAlt /></Button>             
               </Col>               
             </Row>
           </Container>
@@ -40,7 +48,8 @@ class ProgramList extends React.Component {
     });
   }
 
-  renderExercises(exercises) {
+  // OLD
+  /*renderExercises(exercises) {
     if(exercises !== undefined) {
       return this.props.exercises.map(exercise => {
         if (exercises.some(ex => ex.value === exercise.id)) {
@@ -58,7 +67,7 @@ class ProgramList extends React.Component {
     else {
       return null;
     }
-  }
+  }*/
 
   render() {
     return (
@@ -73,9 +82,9 @@ class ProgramList extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    programs: Object.values(state.programs),
-    exercises: Object.values(state.exercises)
+    exercises: Object.values(state.exercises),
+    programs: Object.values(state.programs)
   };
 };
 
-export default connect(mapStateToProps, { fetchPrograms, fetchExercises })(ProgramList);
+export default connect(mapStateToProps, { fetchExercises, fetchPrograms, deleteProgram })(ProgramList);

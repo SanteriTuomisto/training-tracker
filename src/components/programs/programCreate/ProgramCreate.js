@@ -3,12 +3,25 @@ import { Container, Header, Line, Button, Label, Input } from '../../StyledCompo
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
-import initialData from '../../helpers/initialData';
+import initialData from '../../helpers/initialDataProgram';
 import Workout from './Workout';
 import { DragDropContext } from 'react-beautiful-dnd';
+import { connect } from 'react-redux';
+import { createProgram, editProgram } from '../../../actions';
 
 class ProgramCreate extends React.Component {
   state = initialData;
+  
+  edit = false;
+
+  componentDidMount() {
+    // if editing
+    const data = this.props.location.state;
+    if (data !== undefined) {
+      this.setState(data.program);
+      this.edit = data.edit;
+    }
+  }
 
   mapper() {
     return this.state.columnOrder.map(columnId => {
@@ -221,19 +234,43 @@ class ProgramCreate extends React.Component {
 
   }
 
+  onSaveButtonPress = () => {
+    if (this.state.title !== '') {
+      if (this.edit) {
+        this.props.editProgram(this.state.id, this.state);
+      }
+      else {
+        this.props.createProgram(this.state);
+      }
+    }
+    else {
+      return;    
+    }
+  }
+
+  renderHeader() {
+    if (this.edit) {
+      return <Header>Edit program</Header>;
+    }
+    
+    return <Header>Create program</Header>;
+  }
+
   render() {
     return (
       <Container>
-        <Header>
-          Create program
-        </Header>
+        {this.renderHeader()}
         <Line />
-        <Button primary>Save</Button>  
+        <Button primary onClick={this.onSaveButtonPress}>Save</Button>
         <Link to="/programs"><Button>Back</Button></Link>
         <Container>
-
-        <Label>Program name</Label>
-        <Input placeholder="program name" />             
+        <Label>Program name*</Label> 
+        <Input 
+          placeholder="program name" 
+          type="text" 
+          value={this.state.title} 
+          onChange={event => this.setState({ title: event.target.value })} 
+        />    
         </Container>
         <Button onClick={() => this.addNewWorkout()}>Add new workout</Button>
         <DragDropContext onDragEnd={this.onDragEnd}>
@@ -244,6 +281,6 @@ class ProgramCreate extends React.Component {
       </Container>
     );
   }
-};
+}; 
 
-export default ProgramCreate;
+export default connect(null, { createProgram, editProgram })(ProgramCreate);
