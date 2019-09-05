@@ -4,7 +4,8 @@ const initialData = {
     workouts: {
     },
     columnOrder: [],
-    title: ''
+    title: '',
+    description: '',
 };
 
 export default initialData;

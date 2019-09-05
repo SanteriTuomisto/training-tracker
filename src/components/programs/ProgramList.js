@@ -13,23 +13,62 @@ class ProgramList extends React.Component {
     this.props.fetchPrograms();
   }
 
+  renderProgram(program) {
+    var workouts = Object.values(program.workouts);
+    var exercises = Object.values(program.exercises);
+    return workouts.map(workout => {
+     return (
+      <Col key={workout.id}>
+        <Container><h5>{workout.title}</h5>
+          {this.renderExercises(workout.exerciseIds, exercises)}
+        </Container>
+      </Col>
+     );
+    });
+    
+  }
+
+  renderExercises(exerciseIds, exercises) {
+    return exerciseIds.map(exerciseId => {
+      var exerciseArr = exercises.filter(exercise => { return exercise.id === exerciseId })
+      var exercise = exerciseArr[0];
+      return (
+        <Container key={exerciseId}>
+          {exercise.content}
+        </Container>
+      );
+    });
+  }
+
+  viewExercise(program) {
+    if (true) {
+      // TODO hide
+      // <Button>Hide</Button>
+      return(
+        <div>
+          <Row>
+            {this.renderProgram(program)}
+          </Row>
+        </div>
+      );
+    }
+    /*else {
+      return (
+        <Button>View workouts</Button>
+      );
+    }*/
+  }
+
   renderProgramList() {
     return this.props.programs.map(program => {
       return (
         <Col sm={12} key={program.id}>
           <Container> 
             <Row>
-              <Col lg={10} sm={9}>
-                <h3>{program.title}</h3>
-                <Line />
-                  <p>
-                    {program.description}
-                  </p>
-                  <Row>
-                    <Button>View</Button>
-                  </Row>
+              <Col lg={8} sm={7} xs={6}>
+                <h3>{program.title}</h3>                  
               </Col>
-              <Col lg={2} sm={3}>
+              <Col lg={4} sm={5} xs={6}>
                 <Link to={{ 
                     pathname: `/programs/edit/${program.id}`,
                     state: {
@@ -40,7 +79,14 @@ class ProgramList extends React.Component {
                   <Button right>Edit</Button>
                 </Link>          
                 <Button right primary onClick={() => this.props.deleteProgram(program.id)}><FaTrashAlt /></Button>             
-              </Col>               
+              </Col> 
+              <Col sm={12}>
+                <Line />
+                <p>
+                  {program.description}
+                </p>
+                {this.viewExercise(program)}
+              </Col>             
             </Row>
           </Container>
         </Col>

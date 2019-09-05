@@ -271,6 +271,13 @@ class ProgramCreate extends React.Component {
           value={this.state.title} 
           onChange={event => this.setState({ title: event.target.value })} 
         />    
+        <Label>Description</Label> 
+        <Input 
+          placeholder="description" 
+          type="text" 
+          value={this.state.description} 
+          onChange={event => this.setState({ description: event.target.value })} 
+        />  
         </Container>
         <Button onClick={() => this.addNewWorkout()}>Add new workout</Button>
         <DragDropContext onDragEnd={this.onDragEnd}>
