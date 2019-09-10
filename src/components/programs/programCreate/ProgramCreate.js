@@ -183,7 +183,7 @@ class ProgramCreate extends React.Component {
 
     const newExercise = {
       id: nextFreeKey,
-      content: ''
+      exerciseId: null
     };
 
     const workouts = {...this.state.workouts};
@@ -213,7 +213,7 @@ class ProgramCreate extends React.Component {
       if (parseInt(key) !== parseInt(exerciseId)) {
         const newExercise = {
           id: parseInt(key),
-          content: exercises[key].content
+          exerciseId: exercises[key].exerciseId
         };
         newExercises[key] = newExercise;
       }
@@ -235,6 +235,7 @@ class ProgramCreate extends React.Component {
   }
 
   onSaveButtonPress = () => {
+    // TODO check if title is empty, draw error
     if (this.state.title !== '') {
       if (this.edit) {
         this.props.editProgram(this.state.id, this.state);

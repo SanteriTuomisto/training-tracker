@@ -32,9 +32,10 @@ class ProgramList extends React.Component {
     return exerciseIds.map(exerciseId => {
       var exerciseArr = exercises.filter(exercise => { return exercise.id === exerciseId })
       var exercise = exerciseArr[0];
+      // TODO: add exercise
       return (
         <Container key={exerciseId}>
-          {exercise.content}
+          {exercise.exerciseId}
         </Container>
       );
     });

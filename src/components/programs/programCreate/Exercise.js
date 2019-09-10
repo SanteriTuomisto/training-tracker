@@ -5,18 +5,40 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FaTrashAlt } from "react-icons/fa";
 import Select from 'react-select';
+import { fetchExercises } from '../../../actions';
+import { connect } from 'react-redux';
 
 class Exercise extends React.Component {
-    options = [{ value: '', label: 'Bench Press' },
-    { value: '', label: 'Squat' },
-    { value: '', label: 'Deadlift' }];
-    
-    /*componentDidMount() {
-        for(var i = 0; i < this.props.exercises.length; i++) {
+    state = { 
+        selected: null, 
+        exercises: [] 
+    };
+
+    async componentDidMount() {
+        await this.props.fetchExercises();
+        
+        var exercises = [];
+        for (var i = 0; i < this.props.exercises.length; i++) {
             var obj = { value: this.props.exercises[i].id, label: this.props.exercises[i].title };
-            this.options.push(obj);
+            exercises.push(obj);
         }
-    }*/
+        
+        const newState = {
+                selected: (this.props.exercise.exerciseId -1 ),
+                exercises: exercises
+            };
+            
+        this.setState(newState);
+    }
+
+    handleChange = selectedExercise => {
+        const newState = {
+            ...this.state,
+            selected: (selectedExercise.value - 1)
+        };
+
+        this.setState(newState);
+    };
 
     render() {
         return (
@@ -30,9 +52,12 @@ class Exercise extends React.Component {
                     >
                         <Row>
                             <Col md={8}>
-                                <Select options={
-                                    this.options
-                                } />
+                                <Select 
+                                    name="Exercise"
+                                    options={this.state.exercises} 
+                                    value={this.state.exercises[this.state.selected]}
+                                    onChange={this.handleChange}
+                                />
                             </Col>
                             <Col md={4}>
                                 <Button right primary onClick={() => this.props.deleteExercise(this.props.exercise.id)}><FaTrashAlt /></Button>  
@@ -53,4 +78,11 @@ class Exercise extends React.Component {
     }
 }
   
-export default Exercise;
+
+const mapStateToProps = (state) => {
+    return {
+      exercises: Object.values(state.exercises)
+    };
+};
+
+export default connect(mapStateToProps, { fetchExercises })(Exercise);

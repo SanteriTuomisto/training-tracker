@@ -17,7 +17,6 @@ const FrontPage = () => {
           <Button primary>Sign up</Button>        
         </Col>
       </Row>
-      <Line />
       <Row>
         <Col>
           <Link to="/programs">
