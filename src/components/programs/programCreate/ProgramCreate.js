@@ -37,6 +37,7 @@ class ProgramCreate extends React.Component {
             deleteWorkout={() => this.deleteWorkout(workout.id)}
             deleteExercise={this.deleteExercise}
             addExercise={this.addExercise}
+            exerciseChange={this.exerciseChange}
           />
         </Col>
       );
@@ -131,6 +132,8 @@ class ProgramCreate extends React.Component {
   deleteWorkout(id) {
     const workouts = this.state.workouts;
     const newWorkouts = {};
+
+    // TODO remove exercises from program that are not used in other workouts
 
     for (var key in workouts) {
       if (parseInt(key) !== parseInt(id)) {
@@ -234,6 +237,23 @@ class ProgramCreate extends React.Component {
 
   }
 
+  exerciseChange = (selectorData, exercise) => {
+    const newExercise = {
+      id: exercise.id,
+      exerciseId: selectorData.value
+    };
+
+    const newState = {
+      ...this.state,
+      exercises: {
+        ...this.state.exercises,
+        [exercise.id]: newExercise
+      }
+    };
+
+    this.setState(newState);
+  }
+
   onSaveButtonPress = () => {
     // TODO check if title is empty, draw error
     if (this.state.title !== '') {
@@ -245,7 +265,8 @@ class ProgramCreate extends React.Component {
       }
     }
     else {
-      return;    
+      console.log("add title")
+      return;
     }
   }
 

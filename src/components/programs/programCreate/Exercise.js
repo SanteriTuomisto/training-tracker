@@ -37,6 +37,8 @@ class Exercise extends React.Component {
             selected: (selectedExercise.value - 1)
         };
 
+        this.props.exerciseChange(selectedExercise, this.props.exercise);
+
         this.setState(newState);
     };
 

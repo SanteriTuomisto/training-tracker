@@ -28,6 +28,7 @@ class Workout extends React.Component {
                             exercise={exercise} 
                             index={index} 
                             deleteExercise={() => this.deleteExercise(exercise.id)} 
+                            exerciseChange={this.props.exerciseChange}
                         />                                      
                     )}
                 </div>

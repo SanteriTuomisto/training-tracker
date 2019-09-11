@@ -18,6 +18,7 @@ class ExerciseList extends React.Component {
   }
 
   deleteExercise(id, category) {
+    // TODO check if exercise is used in program
     // remove category from state if selected currently
     if (this.state.selectedCategories.includes(category)) {
       const newSelectedCategories = this.state.selectedCategories.filter(item => item !== category);

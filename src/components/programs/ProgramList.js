@@ -29,13 +29,13 @@ class ProgramList extends React.Component {
   }
 
   renderExercises(exerciseIds, exercises) {
+    
     return exerciseIds.map(exerciseId => {
-      var exerciseArr = exercises.filter(exercise => { return exercise.id === exerciseId })
-      var exercise = exerciseArr[0];
-      // TODO: add exercise
+      var exercise = exercises.find(exercise => { return exercise.id === exerciseId })     
+      var exerciseDetails = this.props.exercises.find(e => { return e.id === exercise.exerciseId })
       return (
         <Container key={exerciseId}>
-          {exercise.exerciseId}
+          {exerciseDetails.title}
         </Container>
       );
     });
