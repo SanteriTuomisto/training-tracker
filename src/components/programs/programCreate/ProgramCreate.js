@@ -15,7 +15,7 @@ class ProgramCreate extends React.Component {
   edit = false;
 
   componentDidMount() {
-    // if editing
+    // If editing program
     const data = this.props.location.state;
     if (data !== undefined) {
       this.setState(data.program);
