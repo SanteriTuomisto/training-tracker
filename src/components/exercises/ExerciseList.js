@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 import { Button, Container, Badge, Input, Line } from '../StyledComponents';
 import { FaTrashAlt } from "react-icons/fa";
 
+// TODO edit
+// TODO remove only if not used in workouts
+
 class ExerciseList extends React.Component {
   state = { 
     selectedCategories: [],

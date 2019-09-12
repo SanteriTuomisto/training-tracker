@@ -66,11 +66,11 @@ class Exercise extends React.Component {
                             </Col>     
                             <Col>
                                 <Label>Sets</Label>
-                                <Input />
+                                <Input defaultValue={1} />
                             </Col>
                             <Col>
                                 <Label>Reps</Label>                        
-                                <Input />                        
+                                <Input defaultValue={1} />                        
                             </Col>                         
                         </Row>                      
                     </ContainerDraggable>

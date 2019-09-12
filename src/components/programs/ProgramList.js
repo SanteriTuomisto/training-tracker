@@ -35,7 +35,9 @@ class ProgramList extends React.Component {
       var exerciseDetails = this.props.exercises.find(e => { return e.id === exercise.exerciseId })
       return (
         <Container key={exerciseId}>
-          {exerciseDetails.title}
+          <h5>{exerciseDetails.title}</h5>
+          <div>Sets: {exercise.sets}</div>
+          <div>Reps: {exercise.reps}</div>
         </Container>
       );
     });
@@ -94,27 +96,6 @@ class ProgramList extends React.Component {
       );
     });
   }
-
-  // OLD
-  /*renderExercises(exercises) {
-    if(exercises !== undefined) {
-      return this.props.exercises.map(exercise => {
-        if (exercises.some(ex => ex.value === exercise.id)) {
-          return (
-            <Col sm={3} key={exercise.id}>
-              <h5>{exercise.title}</h5>
-            </Col>
-          );
-        }
-        else {
-          return null;
-        }
-      });
-    }
-    else {
-      return null;
-    }
-  }*/
 
   render() {
     return (

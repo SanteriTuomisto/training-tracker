@@ -9,7 +9,7 @@ class Programs extends React.Component {
       <Container>
         <Header>Programs</Header>
         <Line />
-        <Link to="/programs/new"><Button>Create program</Button></Link>
+        <Link to="/programs/new"><Button primary>Create program</Button></Link>
         <ProgramList />
       </Container>  
       );
