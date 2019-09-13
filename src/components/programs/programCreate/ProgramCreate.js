@@ -38,6 +38,8 @@ class ProgramCreate extends React.Component {
             deleteExercise={this.deleteExercise}
             addExercise={this.addExercise}
             exerciseChange={this.exerciseChange}
+            repsChange={this.repsChange}
+            setsChange={this.setsChange}
           />
         </Col>
       );
@@ -186,7 +188,9 @@ class ProgramCreate extends React.Component {
 
     const newExercise = {
       id: nextFreeKey,
-      exerciseId: null
+      exerciseId: null,
+      sets: 0,
+      reps: 0
     };
 
     const workouts = {...this.state.workouts};
@@ -216,7 +220,9 @@ class ProgramCreate extends React.Component {
       if (parseInt(key) !== parseInt(exerciseId)) {
         const newExercise = {
           id: parseInt(key),
-          exerciseId: exercises[key].exerciseId
+          exerciseId: exercises[key].exerciseId,
+          sets: exercises[key].sets,
+          reps: exercises[key].reps
         };
         newExercises[key] = newExercise;
       }
@@ -240,7 +246,9 @@ class ProgramCreate extends React.Component {
   exerciseChange = (selectorData, exercise) => {
     const newExercise = {
       id: exercise.id,
-      exerciseId: selectorData.value
+      exerciseId: selectorData.value,
+      sets: exercise.sets,
+      reps: exercise.reps
     };
 
     const newState = {
@@ -250,6 +258,40 @@ class ProgramCreate extends React.Component {
         [exercise.id]: newExercise
       }
     };
+
+    this.setState(newState);
+  }
+
+  repsChange = (value, exercise) => {
+    const newExercise = {
+      ...exercise,
+      reps: value
+    }
+
+    const newState = {
+      ...this.state,
+      exercises: {
+        ...this.state.exercises,
+        [exercise.id]: newExercise 
+      }
+    }
+
+    this.setState(newState);
+  }
+
+  setsChange = (value, exercise) => {
+    const newExercise = {
+      ...exercise,
+      sets: value
+    }
+
+    const newState = {
+      ...this.state,
+      exercises: {
+        ...this.state.exercises,
+        [exercise.id]: newExercise 
+      }
+    }
 
     this.setState(newState);
   }

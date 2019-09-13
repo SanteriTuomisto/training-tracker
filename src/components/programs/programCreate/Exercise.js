@@ -11,7 +11,9 @@ import { connect } from 'react-redux';
 class Exercise extends React.Component {
     state = { 
         selected: null, 
-        exercises: [] 
+        exercises: [],
+        sets: 0,
+        reps: 0
     };
 
     async componentDidMount() {
@@ -25,7 +27,9 @@ class Exercise extends React.Component {
         
         const newState = {
                 selected: (this.props.exercise.exerciseId -1 ),
-                exercises: exercises
+                exercises: exercises,
+                sets: this.props.exercise.sets,
+                reps: this.props.exercise.reps
             };
             
         this.setState(newState);
@@ -38,6 +42,28 @@ class Exercise extends React.Component {
         };
 
         this.props.exerciseChange(selectedExercise, this.props.exercise);
+
+        this.setState(newState);
+    };
+
+    changeSetsValues = event => {
+        const newState = {
+            ...this.state,
+            sets: event.target.value
+        };
+
+        this.props.setsChange(event.target.value, this.props.exercise);
+
+        this.setState(newState);
+    };
+
+    changeRepsValues = event => {
+        const newState = {
+            ...this.state,
+            reps: event.target.value
+        };
+
+        this.props.repsChange(event.target.value, this.props.exercise);
 
         this.setState(newState);
     };
@@ -63,14 +89,14 @@ class Exercise extends React.Component {
                             </Col>
                             <Col md={4}>
                                 <Button right primary onClick={() => this.props.deleteExercise(this.props.exercise.id)}><FaTrashAlt /></Button>  
-                            </Col>     
-                            <Col>
-                                <Label>Sets</Label>
-                                <Input defaultValue={1} />
                             </Col>
                             <Col>
-                                <Label>Reps</Label>                        
-                                <Input defaultValue={1} />                        
+                                <Label>Sets</Label>
+                                <Input name="sets" type="number" value={this.state.sets} onChange={this.changeSetsValues} />
+                            </Col>
+                            <Col>
+                                <Label>Reps</Label>
+                                <Input name="reps" type="number" value={this.state.reps} onChange={this.changeRepsValues} />
                             </Col>                         
                         </Row>                      
                     </ContainerDraggable>

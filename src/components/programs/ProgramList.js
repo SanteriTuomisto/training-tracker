@@ -33,20 +33,32 @@ class ProgramList extends React.Component {
     return exerciseIds.map(exerciseId => {
       var exercise = exercises.find(exercise => { return exercise.id === exerciseId })     
       var exerciseDetails = this.props.exercises.find(e => { return e.id === exercise.exerciseId })
-      return (
-        <Container key={exerciseId}>
-          <h5>{exerciseDetails.title}</h5>
-          <div>Sets: {exercise.sets}</div>
-          <div>Reps: {exercise.reps}</div>
-        </Container>
-      );
+      if(exerciseDetails != null) {
+        return (
+          <Container key={exerciseId}>
+            <h5>{exerciseDetails.title}</h5>
+            <div>Sets: {exercise.sets}</div>
+            <div>Reps: {exercise.reps}</div>
+          </Container>
+        );
+      }
+      else {
+        return (
+          <Container key={exerciseId}>
+            <h5>Empty</h5>
+            <div>Sets: {exercise.sets}</div>
+            <div>Reps: {exercise.reps}</div>
+          </Container>
+        );
+      }
+      
     });
   }
 
   viewExercise(program) {
     if (true) {
       // TODO hide
-      // <Button>Hide</Button>
+      //<Button>Hide</Button>
       return(
         <div>
           <Row>
