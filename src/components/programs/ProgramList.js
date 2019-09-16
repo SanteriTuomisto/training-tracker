@@ -6,72 +6,19 @@ import Col from 'react-bootstrap/Col';
 import { Button, Container, Line } from '../StyledComponents';
 import { FaTrashAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import Program from './Program';
 
 class ProgramList extends React.Component {
+
   componentDidMount() {
     this.props.fetchExercises();
     this.props.fetchPrograms();
   }
 
-  renderProgram(program) {
-    var workouts = Object.values(program.workouts);
-    var exercises = Object.values(program.exercises);
-    return workouts.map(workout => {
-     return (
-      <Col key={workout.id}>
-        <Container><h5>{workout.title}</h5>
-          {this.renderExercises(workout.exerciseIds, exercises)}
-        </Container>
-      </Col>
-     );
-    });
-    
-  }
-
-  renderExercises(exerciseIds, exercises) {
-    
-    return exerciseIds.map(exerciseId => {
-      var exercise = exercises.find(exercise => { return exercise.id === exerciseId })     
-      var exerciseDetails = this.props.exercises.find(e => { return e.id === exercise.exerciseId })
-      if(exerciseDetails != null) {
-        return (
-          <Container key={exerciseId}>
-            <h5>{exerciseDetails.title}</h5>
-            <div>Sets: {exercise.sets}</div>
-            <div>Reps: {exercise.reps}</div>
-          </Container>
-        );
-      }
-      else {
-        return (
-          <Container key={exerciseId}>
-            <h5>Empty</h5>
-            <div>Sets: {exercise.sets}</div>
-            <div>Reps: {exercise.reps}</div>
-          </Container>
-        );
-      }
-      
-    });
-  }
-
   viewExercise(program) {
-    if (true) {
-      // TODO hide
-      //<Button>Hide</Button>
-      return(
-        <div>
-          <Row>
-            {this.renderProgram(program)}
-          </Row>
-        </div>
-      );
-    }
-    /*else {
-      return (
-        <Button>View workouts</Button>
-      );
-    }*/
+    return (
+      <Program program={program} exercises={this.props.exercises}/>
+    );
   }
 
   renderProgramList() {

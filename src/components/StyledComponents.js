@@ -113,3 +113,32 @@ export const Icon = styled.div`
   font-size: 50px;
   text-align: center;
 `;
+
+export const SemiHiddenBox = styled.div`
+  height: ${props => (props.hide ? '150px' : '' )}; 
+  overflow: ${props => (props.hide ? 'hidden' : '' )};;
+`;
+
+export const ShowMoreButton = styled.div`
+  background: linear-gradient(to bottom, rgba(255,0,0,0), rgba(255,255,255,1));
+  color: black;
+  cursor: pointer;
+  position: absolute;
+  padding-top: 30px;
+  padding-bottom: 5px;
+  bottom: 0px;
+  text-align: center;
+  width: 100%;
+`;
+
+export const H5_NoBottom_Margin = styled.h5`
+  margin-bottom: 0px;
+`;
+
+export const HideButton = styled.div`
+  color: black;
+  cursor: pointer;
+  padding-top: 20px;
+  text-align: center;
+  width: 100%;
+`;
