@@ -21,11 +21,11 @@ export const Badge = styled.div`
   background: ${props => props.primary ? "white" : "transparent"};
   color: ${props => props.primary ? "palevioletred" : "black"};
   font-size: 1em;
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 3px;
   border: 2px solid black;
   text-align: center;
   border-radius: 3px;
+  display: ${props => props.inline ? "inline" : ""}; 
 `;
 
 export const Label = styled.label`
@@ -93,6 +93,11 @@ export const ContainerAddNew= styled(Container)`
 export const Header = styled.h1`
   margin-bottom: 10px;
   color: black;
+`;
+
+export const H3 = styled.h3`
+  display: ${props => props.inline ? "inline" : ""}; 
+  margin-right: ${props => props.marginRight ? "10px" : ""}; 
 `;
 
 export const Line = styled.hr`

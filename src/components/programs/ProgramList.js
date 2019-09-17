@@ -3,7 +3,7 @@ import { fetchExercises, fetchPrograms, deleteProgram } from '../../actions';
 import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Button, Container, Line, Input, Badge } from '../StyledComponents';
+import { Button, Container, Line, Input, Badge, H3} from '../StyledComponents';
 import { FaTrashAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Program from './Program';
@@ -57,6 +57,22 @@ class ProgramList extends React.Component {
     }
   }
 
+  deleteProgram(id, category) {
+    // remove category from state if selected currently
+    if (this.state.selectedCategories.includes(category)) {
+      const newSelectedCategories = this.state.selectedCategories.filter(item => item !== category);
+
+      const newState = {
+        ...this.state,
+        selectedCategories: newSelectedCategories
+      };
+
+      this.setState(newState);
+    }
+
+    this.props.deleteProgram(id);
+  }
+
   renderProgramList() {
     return this.props.programs.map(program => {
       if (this.state.selectedCategories.length === 0 || 
@@ -68,7 +84,10 @@ class ProgramList extends React.Component {
               <Container> 
                 <Row>
                   <Col lg={8} sm={7} xs={6}>
-                    <h3>{program.title}</h3>    
+                    <H3 inline marginRight>{program.title}</H3>  
+                    <Badge inline>
+                      {program.category}
+                    </Badge>  
                   </Col>
                   <Col lg={4} sm={5} xs={6}>
                     <Link to={{ 
@@ -80,13 +99,10 @@ class ProgramList extends React.Component {
                       }}>
                       <Button right>Edit</Button>
                     </Link>          
-                    <Button right primary onClick={() => this.props.deleteProgram(program.id)}><FaTrashAlt /></Button>             
+                    <Button right primary onClick={() => this.deleteProgram(program.id, program.category)}><FaTrashAlt /></Button>             
                   </Col> 
                   <Col sm={12}>                               
-                    <Line />
-                    <Badge>
-                      {program.category}
-                    </Badge>
+                    <Line />                  
                     <p>
                       {program.description}
                     </p>

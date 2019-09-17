@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import { createProgram, editProgram } from '../../../actions';
 
 // TODO remove exercises from program that are not used in other workouts
-// TODO error check for category field
 
 class ProgramCreate extends React.Component {
   state = initialData;
@@ -21,14 +20,16 @@ class ProgramCreate extends React.Component {
     // If editing program
     const data = this.props.location.state;
     if (data !== undefined) {
-      data.error = false;
+      data.titleError = false;
+      data.categoryError = false;
       this.setState(data.program);
       this.edit = data.edit;
     }
     else {
       const newState = {
         ...this.state,
-        error: false
+        titleError: false,
+        categoryError: false
       };
 
       this.setState(newState);
@@ -325,11 +326,12 @@ class ProgramCreate extends React.Component {
   }
 
   onSaveButtonPress = () => {
-    if (this.state.title !== '') {
+    if (this.state.title !== '' && this.state.category !== '') {
       // remove error from state
       const newState = {
         ...this.state,
-        error: undefined
+        titleError: undefined,
+        categoryError: undefined
       };
 
       this.setState(newState);
@@ -344,12 +346,13 @@ class ProgramCreate extends React.Component {
     else {
       const newState = {
         ...this.state,
-        error: true
+        titleError: this.state.title === '' ? true : false,
+        categoryError: this.state.category === '' ? true : false
       };
 
       this.setState(newState);
       return;
-    }
+    } 
   }
 
   renderHeader() {
@@ -361,9 +364,19 @@ class ProgramCreate extends React.Component {
   }
 
   renderTitleError() {
-    if(this.state.error) {
-      return(
-      <Error>Please enter program name</Error>
+    if(this.state.titleError) {
+      return (
+        <Error>Please enter program name</Error>
+      );
+    }
+    
+    return;
+  }
+
+  renderCategoryError() {
+    if(this.state.categoryError) {
+      return (
+        <Error>Please enter category name</Error>
       );
     }
     
@@ -393,6 +406,7 @@ class ProgramCreate extends React.Component {
           value={this.state.category}
           onChange={event => this.setState({ category: event.target.value })} 
         />  
+        {this.renderCategoryError()}
         <Label>Description</Label> 
         <Input 
           placeholder="description" 
