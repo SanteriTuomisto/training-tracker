@@ -1,11 +1,23 @@
 import React from 'react';
-import { ContainerDrobbable, ContainerColumn, ContainerDraggable, ContainerAddNew, Line, Button, Icon } from '../../StyledComponents';
+import { ContainerDrobbable, ContainerColumn, ContainerDraggable, ContainerAddNew, Input, Line, Button, Icon } from '../../StyledComponents';
 import Exercise from './Exercise';
 import { Droppable } from 'react-beautiful-dnd';
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { FaTrashAlt } from "react-icons/fa";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class Workout extends React.Component {
+    state = { title: '' };
+
+    componentDidMount() {
+        this.setState({ title: this.props.workout.title });
+    }
+
+    changeWorkoutName = (event) => {
+        this.setState(({ title: event.target.value }));
+        this.props.changeWorkoutName(event.target.value, this.props.workout)
+    }
 
     deleteExercise = (exerciseId) => {
         this.props.deleteExercise(this.props.workout.id, exerciseId);
@@ -41,8 +53,20 @@ class Workout extends React.Component {
     render() {
         return (
             <ContainerColumn>
-                <Button right primary onClick={() => this.props.deleteWorkout(this.props.workout.id)}><FaTrashAlt /></Button>  
-                <h4>{this.props.workout.title}</h4>
+                <Row>
+                    <Col lg={9} sm={9} xs={9}>
+                        <Input 
+                            placeholder="Workout name"
+                            value={this.state.title}
+                            type="text"
+                            onChange={event => this.changeWorkoutName(event)}
+                        />
+                    </Col>
+                    <Col lg={3} sm={3} xs={3}>
+                        <Button right primary onClick={() => this.props.deleteWorkout(this.props.workout.id)}><FaTrashAlt /></Button>                      
+                    </Col>
+                </Row>
+                
                 <Line />
                 <Droppable droppableId={this.props.workout.id}>
                     {(provided, snapshot) => (

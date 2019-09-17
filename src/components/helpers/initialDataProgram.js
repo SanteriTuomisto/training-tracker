@@ -6,6 +6,7 @@ const initialData = {
     columnOrder: [],
     title: '',
     description: '',
+    category: ''
 };
 
 export default initialData;

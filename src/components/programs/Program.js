@@ -1,8 +1,9 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { ShowMoreButton, Container, SemiHiddenBox, HideButton, H5_NoBottom_Margin } from '../StyledComponents';
+import { ShowMoreButton, Container, SemiHiddenBox, HideButton, H5NoBottomMargin } from '../StyledComponents';
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
+import _ from 'lodash';
 
 class Program extends React.Component {
   state = { hide: true };
@@ -53,22 +54,23 @@ class Program extends React.Component {
   }
 
   render() {
-    if (this.state.hide) {
+    if (this.state.hide && !_.isEmpty(this.props.program.workouts)) {
       return(
-        <div style={{position: 'relative'}}>
+        // Semi hidden box
+        <div style={{ position: 'relative' }}>
           <SemiHiddenBox hide={this.state.hide}>
             <Row>
               {this.renderProgram(this.props.program)}
             </Row>
           </SemiHiddenBox>
           <ShowMoreButton onClick={this.changeVisibility.bind(this)}>
-            <H5_NoBottom_Margin>View</H5_NoBottom_Margin>    
+            <H5NoBottomMargin>View</H5NoBottomMargin>    
             <IoIosArrowDown />
           </ShowMoreButton>
         </div>
       );
     }
-    else {
+    else if (!this.state.hide && !_.isEmpty(this.props.program.workouts)) {
       return(
         <div>
           <Row>
@@ -76,11 +78,17 @@ class Program extends React.Component {
           </Row>
           <HideButton onClick={this.changeVisibility.bind(this)}>
             <IoIosArrowUp />
-            <H5_NoBottom_Margin>Hide</H5_NoBottom_Margin>
+            <H5NoBottomMargin>Hide</H5NoBottomMargin>
           </HideButton>
         </div>
       );
-    }  
+    }
+    else {
+      return(
+        <div>
+        </div>
+      );
+    }
   }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Header, Line, Button, Label, Input } from '../../StyledComponents';
+import { Container, Header, Line, Button, Label, Input, Error } from '../../StyledComponents';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from 'react-router-dom';
@@ -8,6 +8,9 @@ import Workout from './Workout';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
 import { createProgram, editProgram } from '../../../actions';
+
+// TODO remove exercises from program that are not used in other workouts
+// TODO error check for category field
 
 class ProgramCreate extends React.Component {
   state = initialData;
@@ -18,8 +21,17 @@ class ProgramCreate extends React.Component {
     // If editing program
     const data = this.props.location.state;
     if (data !== undefined) {
+      data.error = false;
       this.setState(data.program);
       this.edit = data.edit;
+    }
+    else {
+      const newState = {
+        ...this.state,
+        error: false
+      };
+
+      this.setState(newState);
     }
   }
 
@@ -40,6 +52,7 @@ class ProgramCreate extends React.Component {
             exerciseChange={this.exerciseChange}
             repsChange={this.repsChange}
             setsChange={this.setsChange}
+            changeWorkoutName={this.changeWorkoutName}
           />
         </Col>
       );
@@ -135,8 +148,6 @@ class ProgramCreate extends React.Component {
     const workouts = this.state.workouts;
     const newWorkouts = {};
 
-    // TODO remove exercises from program that are not used in other workouts
-
     for (var key in workouts) {
       if (parseInt(key) !== parseInt(id)) {
         if (parseInt(key) > parseInt(id)) {
@@ -169,6 +180,23 @@ class ProgramCreate extends React.Component {
 
     this.setState(newState); 
   };
+
+  changeWorkoutName = (newTitle, workout) => {
+    const newWorkout = {
+      ...workout,
+      title: newTitle
+    };
+
+    const newState = {
+      ...this.state,
+      workouts: {
+        ...this.state.workouts,
+        [workout.id]: newWorkout
+      }
+    };
+
+    this.setState(newState);
+  }
 
   addExercise = (workoutId) => {
     const exercises = {...this.state.exercises};
@@ -297,17 +325,29 @@ class ProgramCreate extends React.Component {
   }
 
   onSaveButtonPress = () => {
-    // TODO check if title is empty, draw error
     if (this.state.title !== '') {
+      // remove error from state
+      const newState = {
+        ...this.state,
+        error: undefined
+      };
+
+      this.setState(newState);
+
       if (this.edit) {
-        this.props.editProgram(this.state.id, this.state);
+        this.props.editProgram(this.state.id, newState);
       }
       else {
-        this.props.createProgram(this.state);
+        this.props.createProgram(newState);
       }
     }
     else {
-      console.log("add title")
+      const newState = {
+        ...this.state,
+        error: true
+      };
+
+      this.setState(newState);
       return;
     }
   }
@@ -318,6 +358,16 @@ class ProgramCreate extends React.Component {
     }
     
     return <Header>Create program</Header>;
+  }
+
+  renderTitleError() {
+    if(this.state.error) {
+      return(
+      <Error>Please enter program name</Error>
+      );
+    }
+    
+    return;
   }
 
   render() {
@@ -334,7 +384,15 @@ class ProgramCreate extends React.Component {
           type="text" 
           value={this.state.title} 
           onChange={event => this.setState({ title: event.target.value })} 
-        />    
+        />
+        {this.renderTitleError()}
+        <Label>Category*</Label> 
+        <Input 
+          placeholder="category" 
+          type="text" 
+          value={this.state.category}
+          onChange={event => this.setState({ category: event.target.value })} 
+        />  
         <Label>Description</Label> 
         <Input 
           placeholder="description" 
@@ -343,7 +401,7 @@ class ProgramCreate extends React.Component {
           onChange={event => this.setState({ description: event.target.value })} 
         />  
         </Container>
-        <Button onClick={() => this.addNewWorkout()}>Add new workout</Button>
+        <Button marginTop onClick={() => this.addNewWorkout()}>Add new workout</Button>
         <DragDropContext onDragEnd={this.onDragEnd}>
           <Row>
             {this.mapper()}

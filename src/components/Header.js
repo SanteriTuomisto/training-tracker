@@ -8,7 +8,7 @@ class Header extends React.Component {
     return (
       <Container>
         <Row>
-          <Link to="/"><Button>HOME</Button></Link>
+          <Link to="/"><Button>Home</Button></Link>
           <Link to="/programs"><Button>Programs</Button></Link>
           <Link to="/exercises"><Button>Exercises</Button></Link>
           <Link to="/workouts"><Button>Workouts</Button></Link>
@@ -21,6 +21,3 @@ class Header extends React.Component {
 };
 
 export default Header;
-
-// "/"-route vie login screenille jos ei kirjautunt sisään
-// jos kirjautunut sisään niin "/" etusivu jossa yhteenveto

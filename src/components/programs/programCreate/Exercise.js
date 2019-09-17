@@ -79,7 +79,7 @@ class Exercise extends React.Component {
                         isDragging={snapshot.isDragging} // style if dragged
                     >
                         <Row>
-                            <Col md={8}>
+                            <Col md={8} xs={8}>
                                 <Select 
                                     name="Exercise"
                                     options={this.state.exercises} 
@@ -87,7 +87,7 @@ class Exercise extends React.Component {
                                     onChange={this.handleChange}
                                 />
                             </Col>
-                            <Col md={4}>
+                            <Col md={4} xs={4}>
                                 <Button right primary onClick={() => this.props.deleteExercise(this.props.exercise.id)}><FaTrashAlt /></Button>  
                             </Col>
                             <Col>
@@ -105,7 +105,6 @@ class Exercise extends React.Component {
         );
     }
 }
-  
 
 const mapStateToProps = (state) => {
     return {

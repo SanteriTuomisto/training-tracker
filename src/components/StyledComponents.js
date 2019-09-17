@@ -9,6 +9,7 @@ export const Button = styled.button`
   border: 2px solid black;
   border-radius: 3px;
   float: ${props => props.right ? "right" : ""};
+  margin-top: ${props => props.marginTop ? "25px" : ""};
 
   &:hover {
     background: ${props => props.primary ? "#292929" : "#f5f5f5"};
@@ -131,7 +132,7 @@ export const ShowMoreButton = styled.div`
   width: 100%;
 `;
 
-export const H5_NoBottom_Margin = styled.h5`
+export const H5NoBottomMargin = styled.h5`
   margin-bottom: 0px;
 `;
 
