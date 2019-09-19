@@ -9,8 +9,6 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
 import { createProgram, editProgram } from '../../../actions';
 
-// TODO remove exercises from program that are not used in other workouts
-
 class ProgramCreate extends React.Component {
   state = initialData;
   
@@ -147,6 +145,18 @@ class ProgramCreate extends React.Component {
 
   deleteWorkout(id) {
     const workouts = this.state.workouts;
+    
+    // remove exercises
+    const exercises = {...this.state.exercises};
+    const workoutExerciseIds = Array.from(workouts[id].exerciseIds);
+
+    const newExercises = {};
+    for (var exerciseId in exercises) {
+      if (!workoutExerciseIds.includes(parseInt(exerciseId))) {
+        newExercises[exerciseId] = exercises[exerciseId];
+      }      
+    }
+    
     const newWorkouts = {};
 
     for (var key in workouts) {
@@ -176,6 +186,7 @@ class ProgramCreate extends React.Component {
     const newState = {
       ...this.state,
       columnOrder: newColumnOrder,
+      exercises: newExercises,
       workouts: newWorkouts
     };
 
@@ -364,7 +375,7 @@ class ProgramCreate extends React.Component {
   }
 
   renderTitleError() {
-    if(this.state.titleError) {
+    if (this.state.titleError) {
       return (
         <Error>Please enter program name</Error>
       );
@@ -374,7 +385,7 @@ class ProgramCreate extends React.Component {
   }
 
   renderCategoryError() {
-    if(this.state.categoryError) {
+    if (this.state.categoryError) {
       return (
         <Error>Please enter category name</Error>
       );

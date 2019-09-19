@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { Button, Container, Badge, Input, Line } from '../StyledComponents';
 import { FaTrashAlt } from "react-icons/fa";
 
-// TODO edit
+// TODO edit (add exercise to modal which can be reused?)
 // TODO check if exercise is used in program when deleted
 
 class ExerciseList extends React.Component {
