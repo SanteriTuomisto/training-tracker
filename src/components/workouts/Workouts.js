@@ -1,14 +1,22 @@
 import React from 'react';
 import { Line, Container, Header } from '../StyledComponents';
 
-const Workouts = () => {
-  return (
-    <Container>
-      <Header>Workouts</Header>
-      <Line/>
-      <p>Todo</p>
-    </Container>
-  );
+class Workouts extends React.Component {
+  componentDidMount() {
+    // todo betteR?
+    document.body.style = 'background-color: white; background-image: none;'
+  }
+  
+  render() {
+    return (
+      <Container>
+        <Header>WORKOUTS</Header>
+        <Line/>
+        <p>Todo</p>
+      </Container>
+    );
+  }
+
 };
 
 export default Workouts;

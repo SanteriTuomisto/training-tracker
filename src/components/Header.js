@@ -1,19 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row';
-import { Button, Container } from './StyledComponents';
+import Col from 'react-bootstrap/Col';
+import { NavItem, NavItemLogo, Nav, StyledLink } from './StyledComponents';
+import { FaDumbbell } from "react-icons/fa";
 
 class Header extends React.Component {
   render() {
     return (
-      <Container>
+      <Nav>
         <Row>
-          <Link to="/"><Button>Home</Button></Link>
-          <Link to="/programs"><Button>Programs</Button></Link>
-          <Link to="/exercises"><Button>Exercises</Button></Link>
-          <Link to="/workouts"><Button>Workouts</Button></Link>
+          <Col>
+            <StyledLink to="/"><NavItemLogo><FaDumbbell /></NavItemLogo></StyledLink>
+          </Col>
+          <Col>
+          <StyledLink to="/programs"><NavItem>PROGRAMS</NavItem></StyledLink>          
+          </Col>
+          <Col>
+          <StyledLink to="/exercises"><NavItem>EXERCISES</NavItem></StyledLink>
+          </Col>
+          <Col>
+          <StyledLink to="/workouts"><NavItem>WORKOUTS</NavItem></StyledLink>
+          </Col>
         </Row>
-      </Container>
+      </Nav>
 
     );
   }

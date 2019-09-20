@@ -6,6 +6,11 @@ import { Button, Container, Line, Header } from '../StyledComponents';
 class Exercises extends React.Component {
   state = { show: false }
 
+  componentDidMount() {
+    // todo betteR?
+    document.body.style = 'background-color: white; background-image: none;'
+  }
+
   updateState() {
     if (this.state.show) {
       this.setState({ show: false });
@@ -31,8 +36,8 @@ class Exercises extends React.Component {
 
   render() {
     return (
-      <Container>
-        <Header>Exercises</Header>
+      <Container marginBottom>
+        <Header>EXERCISES</Header>
         <Line />
         {this.renderCreate()}
         <ExerciseList />

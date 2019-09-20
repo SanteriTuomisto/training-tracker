@@ -1,13 +1,14 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Button = styled.button`
-  background: ${props => props.primary ? "black" : "transparent"};
-  color: ${props => props.primary ? "white" : "black"};
+  background: ${props => props.primary ? "black" : "#ffbc00"};
+  color: ${props => props.primary ? "#ffbc00" : "black"};
   font-size: 1em;
   margin: 5px;
-  padding: 0.25em 1em;
-  border: 2px solid black;
-  border-radius: 3px;
+  padding: 0.50em 1.25em;
+  border: none;
+  letter-spacing: 2px;
   float: ${props => props.right ? "right" : ""};
   margin-top: ${props => props.marginTop ? "25px" : ""};
 
@@ -24,7 +25,6 @@ export const Badge = styled.div`
   padding: 3px;
   border: 2px solid black;
   text-align: center;
-  border-radius: 3px;
   display: ${props => props.inline ? "inline" : ""}; 
 `;
 
@@ -37,7 +37,6 @@ export const Input = styled.input`
   background: white;
   padding: 0.35em 1em;
   color: black;
-  border-radius: 3px;
   border: 2px solid black;
   margin: 5px;
   padding-left: 20px;
@@ -46,12 +45,12 @@ export const Input = styled.input`
 `;
 
 export const Container = styled.div`
+  background-color: white;
   margin-top: 20px;
   padding: 20px;
-  border-radius: 6px;
-  border: 2px solid white;
   box-shadow: rgba(0, 0, 0, 0.17) 0px 2px 20px;
   background-color: ${props => (props.isDragging ? 'lightgreen' : '' )}; 
+  margin-bottom: ${props => (props.marginBottom ? '100px' : '' )}; 
 `;
 
 export const ContainerDrobbable = styled(Container)`
@@ -92,7 +91,8 @@ export const ContainerAddNew= styled(Container)`
 
 export const Header = styled.h1`
   margin-bottom: 10px;
-  color: black;
+  color: ${props => (props.yellow ? '#ffbc00' : 'black' )};
+  letter-spacing: 10px;
 `;
 
 export const H3 = styled.h3`
@@ -111,7 +111,6 @@ export const Error = styled.div`
   margin: 5px;
   padding: 0.25em 1em;
   border: 2px solid red;
-  border-radius: 3px;
 `;
 
 export const Icon = styled.div`
@@ -147,4 +146,67 @@ export const HideButton = styled.div`
   padding-top: 20px;
   text-align: center;
   width: 100%;
+`;
+
+export const Nav = styled.div`
+`;
+
+export const NavItem = styled.div`
+  color: #ffbc00;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 20px;
+  letter-spacing: 5px;
+  text-align: center;
+  font-weight: 300;
+
+  &:hover {
+    color: black;
+    background-color: #ffbc00;
+    transition: color 1s ease;
+    transition: background 1s ease;
+  }
+`;
+
+export const NavItemLogo = styled.div`
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  font-size: 40px;
+  letter-spacing: 5px;
+  text-align: center;
+  font-weight: 300;
+
+  &:hover {
+    color: black;
+    background-color: #ffbc00;
+    transition: color 1s ease;
+    transition: background 1s ease;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus, &:hover, &:visited, &:link, &:active {
+      text-decoration: none;
+  }
+`;
+
+export const LogoBox = styled.div`
+  background-color: #ffbc00;
+  margin-top: 100px;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  padding-left: 20px;
+  margin-right: -10px;
+`;
+
+export const FrontPageContent = styled.div`
+  color: #d2d2d2;
+  margin-left: -40px;
+  margin-top: 150px;
+  z-index: -1;
+  background-color: #1d1d1d;
+  padding: 30px;
 `;

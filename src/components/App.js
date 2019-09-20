@@ -12,19 +12,21 @@ import Workouts from './workouts/Workouts';
 
 const App = () => {
   return (
-    <Container>
+    <div>
         <Router history={history}>
         <Header />
-        <Switch>
-          <Route path="/" exact component={FrontPage} />
-          <Route path="/programs" exact component={Programs} />
-          <Route path="/programs/new" exact component={ProgramCreate} />
-          <Route path="/programs/edit/:id" exact component={ProgramCreate} />
-          <Route path="/exercises" exact component={Exercises} />
-          <Route path="/workouts" exact component={Workouts} />
-        </Switch>
+        <Container>
+          <Switch>
+            <Route path="/" exact component={FrontPage} />
+            <Route path="/programs" exact component={Programs} />
+            <Route path="/programs/new" exact component={ProgramCreate} />
+            <Route path="/programs/edit/:id" exact component={ProgramCreate} />
+            <Route path="/exercises" exact component={Exercises} />
+            <Route path="/workouts" exact component={Workouts} />
+          </Switch>
+        </Container>
       </Router>
-    </Container>
+    </div>
   );
 };
 
