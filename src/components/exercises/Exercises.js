@@ -8,7 +8,7 @@ class Exercises extends React.Component {
 
   componentDidMount() {
     // todo betteR?
-    document.body.style = 'background-color: white; background-image: none;'
+    document.body.style = 'background-color: #1d1d1d; background-image: none;'
   }
 
   updateState() {
@@ -36,7 +36,7 @@ class Exercises extends React.Component {
 
   render() {
     return (
-      <Container marginBottom>
+      <Container gray marginBottom>
         <Header>EXERCISES</Header>
         <Line />
         {this.renderCreate()}

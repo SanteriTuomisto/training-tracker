@@ -72,7 +72,7 @@ class Exercise extends React.Component {
         return (
             <Draggable draggableId={this.props.exercise.id} index={this.props.index}>
                 {(provided, snapshot) => (
-                    <ContainerDraggable
+                    <ContainerDraggable gray
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}

@@ -14,7 +14,7 @@ class Program extends React.Component {
     return workouts.map(workout => {
      return (
       <Col key={workout.id}>
-        <Container>
+        <Container yellow>
           <h5>{workout.title}</h5>
           {this.renderExercises(workout.exerciseIds, exercises)}
         </Container>
@@ -29,7 +29,7 @@ class Program extends React.Component {
       var exerciseDetails = this.props.exercises.find(e => { return e.id === exercise.exerciseId })
       if(exerciseDetails != null) {
         return (
-          <Container key={exerciseId}>
+          <Container darkGray yellowText key={exerciseId}>
             <h5>{exerciseDetails.title}</h5>
             <div>Sets: {exercise.sets}</div>
             <div>Reps: {exercise.reps}</div>
@@ -38,7 +38,7 @@ class Program extends React.Component {
       }
       else {
         return (
-          <Container key={exerciseId}>
+          <Container darkGray yellowText key={exerciseId}>
             <h5>Empty</h5>
             <div>Sets: {exercise.sets}</div>
             <div>Reps: {exercise.reps}</div>

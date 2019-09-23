@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom';
 class Programs extends React.Component {
   componentDidMount() {
     // todo betteR?
-    document.body.style = 'background-color: white; background-image: none;'
+    document.body.style = 'background-color: #1d1d1d; background-image: none;'
   }
 
   render() {
     return (
-      <Container marginBottom>
+      <Container marginBottom gray>
         <Header>PROGRAMS</Header>
         <Line />
-        <Link to="/programs/new"><Button primary>Create program</Button></Link>
+        <Link to="/programs/new"><Button primary>Create Program</Button></Link>
         <ProgramList />
       </Container>  
       );

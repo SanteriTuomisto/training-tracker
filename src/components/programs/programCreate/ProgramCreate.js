@@ -396,7 +396,7 @@ class ProgramCreate extends React.Component {
 
   render() {
     return (
-      <Container>
+      <Container gray>
         {this.renderHeader()}
         <Line />
         <Button primary onClick={this.onSaveButtonPress}>Save</Button>

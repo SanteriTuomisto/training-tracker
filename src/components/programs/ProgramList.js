@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Button, Container, Line, Input, Badge, H3} from '../StyledComponents';
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaCheck } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Program from './Program';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
@@ -37,6 +37,7 @@ class ProgramList extends React.Component {
             primary={(this.state.selectedCategories.includes(program.category) ? 'primary' : '')} 
             key={program.id}
           >
+            {(this.state.selectedCategories.includes(program.category) ? <FaCheck /> : null)}
             {program.category}
           </Button>
         );

@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 import { fetchExercises, deleteExercise } from '../../actions';
 import { connect } from 'react-redux';
 import { Button, Container, Badge, Input, Line } from '../StyledComponents';
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaCheck } from "react-icons/fa";
 
 // TODO edit (add exercise to modal which can be reused?)
 // TODO check if exercise is used in program when deleted
@@ -63,6 +63,7 @@ class ExerciseList extends React.Component {
             primary={(this.state.selectedCategories.includes(exercise.category) ? 'primary' : '')} 
             key={exercise.id}
           >
+            {(this.state.selectedCategories.includes(exercise.category) ? <FaCheck /> : null)}
             {exercise.category}
           </Button>
         );
@@ -96,10 +97,8 @@ class ExerciseList extends React.Component {
                 </p>
                 <Line />
                 <Row>
-                  <Col md={6} lg={6}>
+                  <Col >
                     <Button primary onClick={() => this.deleteExercise(exercise.id, exercise.category)}><FaTrashAlt /></Button>
-                  </Col>
-                  <Col md={6} lg={6}>
                     <Button>Edit</Button> 
                   </Col>
                 </Row>

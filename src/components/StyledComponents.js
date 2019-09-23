@@ -13,7 +13,8 @@ export const Button = styled.button`
   margin-top: ${props => props.marginTop ? "25px" : ""};
 
   &:hover {
-    background: ${props => props.primary ? "#292929" : "#f5f5f5"};
+    background: ${props => props.primary ? "#1d1d1d" : "#1d1d1d"};
+    color: ${props => props.primary ? "#ffbc00" : "#ffbc00"};
     transition: background 0.2s ease;
   }
 `;
@@ -45,12 +46,15 @@ export const Input = styled.input`
 `;
 
 export const Container = styled.div`
-  background-color: white;
+  background-color: #e6e6e6;
   margin-top: 20px;
   padding: 20px;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px 2px 20px;
+  color: ${props => (props.yellowText ? '#ffbc00' : 'black' )}; 
   background-color: ${props => (props.isDragging ? 'lightgreen' : '' )}; 
+  background-color: ${props => (props.darkGray ? '#1d1d1d' : '' )}; 
   margin-bottom: ${props => (props.marginBottom ? '100px' : '' )}; 
+  background-color: ${props => (props.gray ? '#b7b7b7' : '' )};
+  background-color: ${props => (props.yellow ? '#ffbc00' : '' )};
 `;
 
 export const ContainerDrobbable = styled(Container)`
@@ -125,8 +129,8 @@ export const SemiHiddenBox = styled.div`
 `;
 
 export const ShowMoreButton = styled.div`
-  background: linear-gradient(to bottom, rgba(255,0,0,0), rgba(255,255,255,1));
-  color: black;
+  background: linear-gradient(to bottom, rgba(255,0,0,0), rgba(30,30,30,1));
+  color: white;
   cursor: pointer;
   position: absolute;
   padding-top: 30px;
