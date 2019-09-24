@@ -119,7 +119,7 @@ class ExerciseList extends React.Component {
   render() {
     return (
       <div>
-        <Container>
+        <Container gray>
           <Row>
             <Col md={12} lg={6}>
               <h4>Sort exercises by category:</h4>

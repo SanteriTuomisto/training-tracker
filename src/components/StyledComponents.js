@@ -53,8 +53,10 @@ export const Container = styled.div`
   background-color: ${props => (props.isDragging ? 'lightgreen' : '' )}; 
   background-color: ${props => (props.darkGray ? '#1d1d1d' : '' )}; 
   margin-bottom: ${props => (props.marginBottom ? '100px' : '' )}; 
+  margin-top: ${props => (props.marginTop ? '130px' : '' )}; 
   background-color: ${props => (props.gray ? '#b7b7b7' : '' )};
   background-color: ${props => (props.yellow ? '#ffbc00' : '' )};
+  background: ${props => (props.transparent ? 'none' : '' )};
 `;
 
 export const ContainerDrobbable = styled(Container)`
@@ -95,8 +97,26 @@ export const ContainerAddNew= styled(Container)`
 
 export const Header = styled.h1`
   margin-bottom: 10px;
+  animation: ${props => (props.animation ? 'tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;' : '' )}; 
   color: ${props => (props.yellow ? '#ffbc00' : 'black' )};
+  text-align: ${props => (props.center ? 'center' : '' )};
+  font-size: ${props => (props.large ? '5em' : '' )};
+  margin-top: ${props => (props.marginTop ? '70px' : '' )}; 
   letter-spacing: 10px;
+
+  @keyframes tracking-in-expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
 `;
 
 export const H3 = styled.h3`
@@ -156,6 +176,7 @@ export const Nav = styled.div`
 `;
 
 export const NavItem = styled.div`
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
   color: #ffbc00;
   padding-top: 40px;
   padding-bottom: 40px;
@@ -170,6 +191,19 @@ export const NavItem = styled.div`
     transition: color 1s ease;
     transition: background 1s ease;
   }
+
+  @keyframes tracking-in-expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 export const NavItemLogo = styled.div`
@@ -180,12 +214,26 @@ export const NavItemLogo = styled.div`
   letter-spacing: 5px;
   text-align: center;
   font-weight: 300;
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 
   &:hover {
     color: black;
     background-color: #ffbc00;
     transition: color 1s ease;
     transition: background 1s ease;
+  }
+
+  @keyframes tracking-in-expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 `;
 
