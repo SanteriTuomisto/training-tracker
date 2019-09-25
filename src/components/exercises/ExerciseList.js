@@ -119,16 +119,16 @@ class ExerciseList extends React.Component {
   render() {
     return (
       <div>
-        <Container gray>
+        <Container yellowText blur shadow transparent>
           <Row>
-            <Col md={12} lg={6}>
-              <h4>Sort exercises by category:</h4>
+            <Col md={12} lg={8}>
+              <h5>Sort:</h5>
               <ButtonGroup aria-label="Categories">
                 {this.renderCategoriesList()}
               </ButtonGroup>
             </Col>
-            <Col md={12} lg={6}>
-              <h4>Search exercises:</h4>
+            <Col md={12} lg={4}>
+              <h5>Search:</h5>
               <Input type="text" placeholder="Search..." onChange={this.search} value={this.state.search} />
             </Col>
           </Row>

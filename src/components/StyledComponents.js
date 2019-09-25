@@ -35,18 +35,19 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  background: white;
+  background: black;
   padding: 0.35em 1em;
-  color: black;
+  color: #ffbc00;
   border: 2px solid black;
   margin: 5px;
   padding-left: 20px;
   box-shadow: rgba(0, 0, 0, 0.17) 0px 2px 20px;
-  width: 100%;
+  width: 95%;
 `;
 
 export const Container = styled.div`
   background-color: #e6e6e6;
+  box-shadow: ${props => (props.shadow ? '5px 5px 20px 0px #0a0a0a' : '' )};
   margin-top: 20px;
   padding: 20px;
   color: ${props => (props.yellowText ? '#ffbc00' : 'black' )}; 
@@ -57,6 +58,8 @@ export const Container = styled.div`
   background-color: ${props => (props.gray ? '#b7b7b7' : '' )};
   background-color: ${props => (props.yellow ? '#ffbc00' : '' )};
   background: ${props => (props.transparent ? 'none' : '' )};
+  backdrop-filter: ${props => (props.blur ? 'blur(15px)' : '' )};
+  border-radius: 3px;
 `;
 
 export const ContainerDrobbable = styled(Container)`
@@ -262,3 +265,4 @@ export const FrontPageContent = styled.div`
   background-color: #1d1d1d;
   padding: 30px;
 `;
+
