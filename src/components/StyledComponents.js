@@ -19,14 +19,27 @@ export const Button = styled.button`
   }
 `;
 
+export const ExerciseButton = styled(Button)`
+  width: 50%;
+  margin: 0px;
+`;
+
 export const Badge = styled.div`
   background: ${props => props.primary ? "white" : "transparent"};
-  color: ${props => props.primary ? "palevioletred" : "black"};
   font-size: 1em;
   padding: 3px;
-  border: 2px solid black;
+  border-top: 2px dashed #808080;
+  margin-left: 20px;
+  margin-right: 20px;
   text-align: center;
   display: ${props => props.inline ? "inline" : ""}; 
+`;
+
+export const BadgeText = styled.p`
+  color: #808080;
+  font-weight: 100;
+  margin-top: 10px;
+  margin-bottom: 13px;
 `;
 
 export const Label = styled.label`
@@ -47,19 +60,42 @@ export const Input = styled.input`
 
 export const Container = styled.div`
   background-color: #e6e6e6;
-  box-shadow: ${props => (props.shadow ? '5px 5px 20px 0px #0a0a0a' : '' )};
+  box-shadow: ${props => (props.shadow ? '0px 5px 20px 0px #101010' : '' )};
   margin-top: 20px;
   padding: 20px;
   color: ${props => (props.yellowText ? '#ffbc00' : 'black' )}; 
   background-color: ${props => (props.isDragging ? 'lightgreen' : '' )}; 
   background-color: ${props => (props.darkGray ? '#1d1d1d' : '' )}; 
   margin-bottom: ${props => (props.marginBottom ? '100px' : '' )}; 
-  margin-top: ${props => (props.marginTop ? '130px' : '' )}; 
+  margin-top: ${props => (props.marginTop ? '150px' : '' )}; 
   background-color: ${props => (props.gray ? '#b7b7b7' : '' )};
   background-color: ${props => (props.yellow ? '#ffbc00' : '' )};
   background: ${props => (props.transparent ? 'none' : '' )};
-  backdrop-filter: ${props => (props.blur ? 'blur(15px)' : '' )};
+  backdrop-filter: ${props => (props.blur ? 'blur(5px)' : '' )};
   border-radius: 3px;
+`;
+
+export const ExerciseToolsContainer = styled.div`
+  background-color: rgba(23, 23, 23, 0.93);
+  color: #ffbc00;
+  padding: 15px 20px 12px 20px;
+  border-radius: 3px;
+  box-shadow: 0px 5px 20px 0px #212121;
+`;
+
+export const ExerciseContainer = styled.div`
+  background-color: rgba(23, 23, 23, 0.93);
+  padding-top: 20px;
+  margin-top: 30px;
+  box-shadow: 0px 5px 20px 0px #212121;
+  border-radius: 3px;
+`;
+
+export const ExerciseContainerInner = styled.div`
+  background-color: rgba(0, 0, 0, 0.83);
+  padding: 20px;
+  margin: 0px 0px 8px 0px;
+  color: #737373;
 `;
 
 export const ContainerDrobbable = styled(Container)`
@@ -125,6 +161,18 @@ export const Header = styled.h1`
 export const H3 = styled.h3`
   display: ${props => props.inline ? "inline" : ""}; 
   margin-right: ${props => props.marginRight ? "10px" : ""}; 
+`;
+
+export const ExerciseHeader = styled.h4`
+  color: #ffbc00;
+  letter-spacing: 5px;
+  text-align: ${props => props.center ? "center" : "left"}; 
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-top: ${props => (props.marginTop ? '10px' : '' )}; 
+  margin-bottom: ${props => (props.marginBottom ? '25px' : '' )}; 
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 
 export const Line = styled.hr`
@@ -266,3 +314,6 @@ export const FrontPageContent = styled.div`
   padding: 30px;
 `;
 
+export const IconButton = styled.span`
+  margin-right: 10px;
+`;

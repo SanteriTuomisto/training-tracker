@@ -36,11 +36,12 @@ class Exercises extends React.Component {
 
   render() {
     return (
+          //{this.renderCreate()}
+
       <div>
         <Header yellow center large marginTop animation>EXERCISES</Header>
 
         <Container transparent marginBottom marginTop>
-          {this.renderCreate()}
           <ExerciseList />
         </Container>
       </div>

@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { fetchExercises, deleteExercise } from '../../actions';
 import { connect } from 'react-redux';
-import { Button, Container, Badge, Input, Line } from '../StyledComponents';
+import { Button, IconButton, Badge, Input, ExerciseHeader, BadgeText, ExerciseContainerInner, ExerciseContainer, ExerciseButton, ExerciseToolsContainer } from '../StyledComponents';
 import { FaTrashAlt, FaCheck } from "react-icons/fa";
 
 // TODO edit (add exercise to modal which can be reused?)
@@ -63,7 +63,7 @@ class ExerciseList extends React.Component {
             primary={(this.state.selectedCategories.includes(exercise.category) ? 'primary' : '')} 
             key={exercise.id}
           >
-            {(this.state.selectedCategories.includes(exercise.category) ? <FaCheck /> : null)}
+            {(this.state.selectedCategories.includes(exercise.category) ? <IconButton><FaCheck /></IconButton> : null)}
             {exercise.category}
           </Button>
         );
@@ -80,29 +80,29 @@ class ExerciseList extends React.Component {
            exercise.title.toLowerCase().includes(this.state.search.toLowerCase())) {
           return (
             <Col sm={4} key={exercise.id}>
-              <Container>
+              <ExerciseContainer transparent blur shadow>
                 <Row>
-                  <Col md={12} lg={8}>
-                    <h4>{exercise.title}</h4>
+                  <Col md={12}>
+                    <ExerciseHeader center marginTop marginBottom>{exercise.title}</ExerciseHeader>
                   </Col>
-                  <Col md={12} lg={4}>       
+                  <Col md={12}>
                     <Badge>
-                    {exercise.category}
+                        <BadgeText>{exercise.category}</BadgeText>
                     </Badge>
                   </Col>
+
                 </Row>
-                <Line />
-                <p>
-                  {exercise.description} 
-                </p>
-                <Line />
-                <Row>
-                  <Col >
-                    <Button primary onClick={() => this.deleteExercise(exercise.id, exercise.category)}><FaTrashAlt /></Button>
-                    <Button>Edit</Button> 
-                  </Col>
-                </Row>
-              </Container>
+                <ExerciseContainerInner>
+
+                  
+                  <p>
+                    {exercise.description} 
+                  </p>
+                
+                </ExerciseContainerInner>
+                <ExerciseButton>Edit</ExerciseButton> 
+                <ExerciseButton primary onClick={() => this.deleteExercise(exercise.id, exercise.category)}><FaTrashAlt /></ExerciseButton>                  
+              </ExerciseContainer>
             </Col>
           );
         }
@@ -119,20 +119,20 @@ class ExerciseList extends React.Component {
   render() {
     return (
       <div>
-        <Container yellowText blur shadow transparent>
+        <ExerciseToolsContainer>
           <Row>
             <Col md={12} lg={8}>
-              <h5>Sort:</h5>
+              <ExerciseHeader>Sort</ExerciseHeader>
               <ButtonGroup aria-label="Categories">
                 {this.renderCategoriesList()}
               </ButtonGroup>
             </Col>
             <Col md={12} lg={4}>
-              <h5>Search:</h5>
+              <ExerciseHeader>Search</ExerciseHeader>
               <Input type="text" placeholder="Search..." onChange={this.search} value={this.state.search} />
             </Col>
           </Row>
-        </Container>
+        </ExerciseToolsContainer>
         <Row>
           {this.renderExerciseList()}
         </Row>
