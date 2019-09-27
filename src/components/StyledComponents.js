@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
 
 export const Button = styled.button`
   background: ${props => props.primary ? "black" : "#ffbc00"};
@@ -81,6 +82,7 @@ export const ExerciseToolsContainer = styled.div`
   padding: 15px 20px 12px 20px;
   border-radius: 3px;
   box-shadow: 0px 5px 20px 0px #212121;
+  backdrop-filter: 
 `;
 
 export const ExerciseContainer = styled.div`
@@ -296,24 +298,27 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const LogoBox = styled.div`
-  background-color: #ffbc00;
-  margin-top: 100px;
-  padding-top: 150px;
-  padding-bottom: 150px;
-  padding-left: 20px;
-  margin-right: -10px;
-`;
-
 export const FrontPageContent = styled.div`
-  color: #d2d2d2;
-  margin-left: -40px;
-  margin-top: 150px;
-  z-index: -1;
-  background-color: #1d1d1d;
-  padding: 30px;
+  text-align: center;
 `;
 
 export const IconButton = styled.span`
   margin-right: 10px;
+`;
+
+export const FrontPageButtons = styled(ButtonGroup)`
+  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
+  @keyframes tracking-in-expand {
+    0% {
+      letter-spacing: -0.5em;
+      opacity: 0;
+    }
+    40% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;

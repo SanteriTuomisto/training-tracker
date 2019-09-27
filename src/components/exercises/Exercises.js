@@ -1,7 +1,7 @@
 import React from 'react';
 import ExerciseList from './ExerciseList';
 import ExerciseCreate from './ExerciseCreate';
-import { Button, Container, Line, Header } from '../StyledComponents';
+import { Button, Container, ExerciseToolsContainer, Header } from '../StyledComponents';
 
 class Exercises extends React.Component {
   state = { show: false }
@@ -23,10 +23,10 @@ class Exercises extends React.Component {
   renderCreate() {
     if (this.state.show) {
       return (
-        <Container>
+        <ExerciseToolsContainer>
           <Button onClick={() => this.updateState()}>Close</Button>
           <ExerciseCreate onSubmitPress={this.updateState} />
-        </Container>
+        </ExerciseToolsContainer>
       );
     }
     else {
@@ -36,12 +36,10 @@ class Exercises extends React.Component {
 
   render() {
     return (
-          //{this.renderCreate()}
-
       <div>
         <Header yellow center large marginTop animation>EXERCISES</Header>
-
         <Container transparent marginBottom marginTop>
+          {this.renderCreate()}
           <ExerciseList />
         </Container>
       </div>
