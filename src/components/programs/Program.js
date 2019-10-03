@@ -1,7 +1,7 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { ShowMoreButton, Container, SemiHiddenBox, HideButton, H5NoBottomMargin } from '../StyledComponents';
+import { ShowMoreButton, Container, SemiHiddenBox, HideButton, H5NoBottomMargin, ExerciseHeader, ExerciseContainerInner } from '../StyledComponents';
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import _ from 'lodash';
 
@@ -14,10 +14,10 @@ class Program extends React.Component {
     return workouts.map(workout => {
      return (
       <Col key={workout.id}>
-        <Container yellow>
-          <h5>{workout.title}</h5>
+        <ExerciseContainerInner>
+          <ExerciseHeader>{workout.title}</ExerciseHeader>
           {this.renderExercises(workout.exerciseIds, exercises)}
-        </Container>
+        </ExerciseContainerInner>
       </Col>
      );
     }); 
@@ -29,20 +29,20 @@ class Program extends React.Component {
       var exerciseDetails = this.props.exercises.find(e => { return e.id === exercise.exerciseId })
       if(exerciseDetails != null) {
         return (
-          <Container darkGray yellowText key={exerciseId}>
-            <h5>{exerciseDetails.title}</h5>
+          <ExerciseContainerInner key={exerciseId}>
+            <ExerciseHeader size="18px">{exerciseDetails.title}</ExerciseHeader>
             <div>Sets: {exercise.sets}</div>
             <div>Reps: {exercise.reps}</div>
-          </Container>
+          </ExerciseContainerInner>
         );
       }
       else {
         return (
-          <Container darkGray yellowText key={exerciseId}>
-            <h5>Empty</h5>
+          <ExerciseContainerInner key={exerciseId}>
+            <ExerciseHeader size="18px">Empty</ExerciseHeader>
             <div>Sets: {exercise.sets}</div>
             <div>Reps: {exercise.reps}</div>
-          </Container>
+          </ExerciseContainerInner>
         );
       }
       
@@ -59,6 +59,7 @@ class Program extends React.Component {
         // Semi hidden box
         <div style={{ position: 'relative' }}>
           <SemiHiddenBox hide={this.state.hide}>
+            <ExerciseHeader center marginTop marginBottom>WORKOUTS</ExerciseHeader>
             <Row>
               {this.renderProgram(this.props.program)}
             </Row>
@@ -73,6 +74,7 @@ class Program extends React.Component {
     else if (!this.state.hide && !_.isEmpty(this.props.program.workouts)) {
       return(
         <div>
+          <ExerciseHeader center marginTop marginBottom>WORKOUTS</ExerciseHeader>
           <Row>
               {this.renderProgram(this.props.program)}
           </Row>

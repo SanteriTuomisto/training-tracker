@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { Button, IconButton, Badge, Input, ExerciseHeader, BadgeText, ExerciseContainerInner, ExerciseContainer, ExerciseButton, ExerciseToolsContainer } from '../StyledComponents';
 import { FaTrashAlt, FaCheck } from "react-icons/fa";
 
-// TODO edit (add exercise to modal which can be reused?)
+// TODO edit (add exercise-box to modal which can be reused?)
 // TODO check if exercise is used in program when deleted
 
 class ExerciseList extends React.Component {
@@ -129,7 +129,7 @@ class ExerciseList extends React.Component {
             </Col>
             <Col md={12} lg={4}>
               <ExerciseHeader>Search</ExerciseHeader>
-              <Input type="text" placeholder="Search..." onChange={this.search} value={this.state.search} />
+              <Input type="text" placeholder="Exercise..." onChange={this.search} value={this.state.search} />
             </Col>
           </Row>
         </ExerciseToolsContainer>

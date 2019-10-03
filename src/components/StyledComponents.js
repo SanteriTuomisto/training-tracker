@@ -168,6 +168,7 @@ export const H3 = styled.h3`
 export const ExerciseHeader = styled.h4`
   color: #ffbc00;
   letter-spacing: 5px;
+  font-size: ${props => props.size || ''}; 
   text-align: ${props => props.center ? "center" : "left"}; 
   text-transform: uppercase;
   font-weight: 300;
@@ -218,9 +219,10 @@ export const H5NoBottomMargin = styled.h5`
 `;
 
 export const HideButton = styled.div`
-  color: black;
+  color: white;
   cursor: pointer;
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   text-align: center;
   width: 100%;
 `;

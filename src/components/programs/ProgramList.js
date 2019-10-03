@@ -3,7 +3,7 @@ import { fetchExercises, fetchPrograms, deleteProgram } from '../../actions';
 import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Button, Container, Line, Input, Badge, H3} from '../StyledComponents';
+import { Button, ExerciseContainer, Input, Badge, ExerciseContainerInner, ExerciseButton, ExerciseToolsContainer, ExerciseHeader, BadgeText } from '../StyledComponents';
 import { FaTrashAlt, FaCheck } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Program from './Program';
@@ -82,35 +82,38 @@ class ProgramList extends React.Component {
           program.title.toLowerCase().includes(this.state.search.toLowerCase())) {
           return (
             <Col sm={12} key={program.id}>
-              <Container> 
+              <ExerciseContainer transparent blur shadow>
                 <Row>
-                  <Col lg={8} sm={7} xs={6}>
-                    <H3 inline marginRight>{program.title}</H3>  
-                    <Badge inline>
-                      {program.category}
-                    </Badge>  
+                  <Col md={12}>
+                    <ExerciseHeader center marginTop marginBottom>{program.title}</ExerciseHeader>
                   </Col>
-                  <Col lg={4} sm={5} xs={6}>
-                    <Link to={{ 
-                        pathname: `/programs/edit/${program.id}`,
-                        state: {
-                          program: program,
-                          edit: true
-                        }             
-                      }}>
-                      <Button right>Edit</Button>
-                    </Link>          
-                    <Button right primary onClick={() => this.deleteProgram(program.id, program.category)}><FaTrashAlt /></Button>             
-                  </Col> 
-                  <Col sm={12}>                               
-                    <Line />                  
-                    <p>
-                      {program.description}
-                    </p>
+                  <Col md={12}>
+                    <Badge>
+                        <BadgeText>{program.category}</BadgeText>
+                    </Badge>
+                  </Col>
+                </Row>
+                <ExerciseContainerInner>              
+                  <p>
+                    {program.description} 
+                  </p>
+                </ExerciseContainerInner>
+                <Row>
+                  <Col sm={12}>                                                              
                     {this.viewExercise(program)}
                   </Col>             
                 </Row>
-              </Container>
+                <Link to={{ 
+                      pathname: `/programs/edit/${program.id}`,
+                      state: {
+                        program: program,
+                        edit: true
+                      }             
+                    }}>
+                    <ExerciseButton>Edit</ExerciseButton> 
+                </Link>              
+                <ExerciseButton primary onClick={() => this.deleteProgram(program.id, program.category)}><FaTrashAlt /></ExerciseButton>                               
+              </ExerciseContainer>
             </Col>
           );
         }
@@ -127,20 +130,20 @@ class ProgramList extends React.Component {
   render() {
     return (
       <div>
-        <Container>
+        <ExerciseToolsContainer>
           <Row>
-            <Col md={12} lg={6}>
-              <h4>Sort programs by category:</h4>
+            <Col md={12} lg={8}>
+              <ExerciseHeader>Sort</ExerciseHeader>
               <ButtonGroup aria-label="Categories">
                 {this.renderCategoriesList()}
               </ButtonGroup>
             </Col>
-            <Col md={12} lg={6}>
-              <h4>Search programs:</h4>
-              <Input type="text" placeholder="Search..." onChange={event => this.setState({ search: event.target.value })} value={this.state.search} />
+            <Col md={12} lg={4}>
+              <ExerciseHeader>Search</ExerciseHeader>
+              <Input type="text" placeholder="Program..." onChange={event => this.setState({ search: event.target.value })} value={this.state.search} />
             </Col>
           </Row>
-        </Container>        
+        </ExerciseToolsContainer>        
         <Row>
           {this.renderProgramList()}
         </Row>
