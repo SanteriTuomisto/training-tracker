@@ -2,13 +2,13 @@ import React from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { fetchExercises, deleteExercise } from '../../actions';
+import { fetchExercises, deleteExercise, fetchPrograms } from '../../actions';
 import { connect } from 'react-redux';
 import { Button, IconButton, Badge, Input, ExerciseHeader, BadgeText, ExerciseContainerInner, ExerciseContainer, ExerciseButton, ExerciseToolsContainer } from '../StyledComponents';
 import { FaTrashAlt, FaCheck } from "react-icons/fa";
 
 // TODO edit (add exercise-box to modal which can be reused?)
-// TODO check if exercise is used in program when deleted
+// TODO error msg when deleting used exercise 
 
 class ExerciseList extends React.Component {
   state = { 
@@ -18,22 +18,40 @@ class ExerciseList extends React.Component {
 
   componentDidMount() {
     this.props.fetchExercises();
+    this.props.fetchPrograms();
   }
 
   deleteExercise(id, category) {
-    // remove category from state if selected currently
-    if (this.state.selectedCategories.includes(category)) {
-      const newSelectedCategories = this.state.selectedCategories.filter(item => item !== category);
+    // check if used in workouts
+    var used = false;
+    for (var i = 0; i < this.props.programs.length; i++) {
+      var exercises = this.props.programs[i].exercises;
 
-      const newState = {
-        ...this.state,
-        selectedCategories: newSelectedCategories
-      };
+      for (const key of Object.keys(exercises)) {
+        if (exercises[key].exerciseId === id) {
+          // TODO error msg
+          console.log("ei voi poistaa");
+          console.log(this.props.programs[i]);
+          used = true;
+        }
+      }
+    } 
 
-      this.setState(newState);
+    if (!used) {
+      // remove category from state if selected currently
+      if (this.state.selectedCategories.includes(category)) {
+        const newSelectedCategories = this.state.selectedCategories.filter(item => item !== category);
+
+        const newState = {
+          ...this.state,
+          selectedCategories: newSelectedCategories
+        };
+
+        this.setState(newState);
+      }
+
+      this.props.deleteExercise(id);
     }
-
-    this.props.deleteExercise(id);
   }
   
   search = (event) => {
@@ -79,7 +97,7 @@ class ExerciseList extends React.Component {
         if(this.state.search.length === 0 || 
            exercise.title.toLowerCase().includes(this.state.search.toLowerCase())) {
           return (
-            <Col sm={4} key={exercise.id}>
+            <Col md={4} key={exercise.id}>
               <ExerciseContainer transparent blur shadow>
                 <Row>
                   <Col md={12}>
@@ -143,8 +161,9 @@ class ExerciseList extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    exercises: Object.values(state.exercises)
+    exercises: Object.values(state.exercises),
+    programs: Object.values(state.programs)
   };
 };
 
-export default connect(mapStateToProps, { fetchExercises, deleteExercise })(ExerciseList);
+export default connect(mapStateToProps, { fetchExercises, deleteExercise, fetchPrograms })(ExerciseList);

@@ -1,7 +1,7 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { ShowMoreButton, Container, SemiHiddenBox, HideButton, H5NoBottomMargin, ExerciseHeader, ExerciseContainerInner } from '../StyledComponents';
+import { ShowMoreButton, SemiHiddenBox, HideButton, H5NoBottomMargin, ExerciseHeader, ExerciseContainerInner } from '../StyledComponents';
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import _ from 'lodash';
 

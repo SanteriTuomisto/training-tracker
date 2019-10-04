@@ -1,6 +1,4 @@
 import React from 'react';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import { Button, Header, FrontPageContent, FrontPageButtons } from './StyledComponents';
 import { Link } from 'react-router-dom';
 import { FaDumbbell } from "react-icons/fa";

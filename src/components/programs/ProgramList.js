@@ -3,7 +3,7 @@ import { fetchExercises, fetchPrograms, deleteProgram } from '../../actions';
 import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Button, ExerciseContainer, Input, Badge, ExerciseContainerInner, ExerciseButton, ExerciseToolsContainer, ExerciseHeader, BadgeText } from '../StyledComponents';
+import { Button, ExerciseContainer, Input, Badge, ExerciseContainerInner, IconButton, ExerciseButton, ExerciseToolsContainer, ExerciseHeader, BadgeText } from '../StyledComponents';
 import { FaTrashAlt, FaCheck } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Program from './Program';
@@ -37,7 +37,7 @@ class ProgramList extends React.Component {
             primary={(this.state.selectedCategories.includes(program.category) ? 'primary' : '')} 
             key={program.id}
           >
-            {(this.state.selectedCategories.includes(program.category) ? <FaCheck /> : null)}
+            {(this.state.selectedCategories.includes(program.category) ? <IconButton><FaCheck /></IconButton> : null)}
             {program.category}
           </Button>
         );
@@ -85,7 +85,7 @@ class ProgramList extends React.Component {
               <ExerciseContainer transparent blur shadow>
                 <Row>
                   <Col md={12}>
-                    <ExerciseHeader center marginTop marginBottom>{program.title}</ExerciseHeader>
+                    <ExerciseHeader center marginTop marginBottom size={'32px'}>{program.title}</ExerciseHeader>
                   </Col>
                   <Col md={12}>
                     <Badge>
