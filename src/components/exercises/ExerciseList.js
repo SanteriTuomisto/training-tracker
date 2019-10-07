@@ -1,5 +1,6 @@
 import React from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup'
+import { Link } from 'react-router-dom';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { fetchExercises, deleteExercise, fetchPrograms } from '../../actions';
@@ -7,7 +8,6 @@ import { connect } from 'react-redux';
 import { Button, IconButton, Badge, Input, ExerciseHeader, BadgeText, ExerciseContainerInner, ExerciseContainer, ExerciseButton, ExerciseToolsContainer } from '../StyledComponents';
 import { FaTrashAlt, FaCheck } from "react-icons/fa";
 
-// TODO edit (add exercise-box to modal which can be reused?)
 // TODO error msg when deleting used exercise 
 
 class ExerciseList extends React.Component {
@@ -118,7 +118,11 @@ class ExerciseList extends React.Component {
                   </p>
                 
                 </ExerciseContainerInner>
-                <ExerciseButton>Edit</ExerciseButton> 
+                <Link to={{ 
+                      pathname: `/exercises/edit/${exercise.id}`         
+                    }}>
+                    <ExerciseButton>Edit</ExerciseButton> 
+                </Link> 
                 <ExerciseButton primary onClick={() => this.deleteExercise(exercise.id, exercise.category)}><FaTrashAlt /></ExerciseButton>                  
               </ExerciseContainer>
             </Col>
@@ -138,6 +142,7 @@ class ExerciseList extends React.Component {
     return (
       <div>
         <ExerciseToolsContainer>
+          <Link to="/exercises/new"><Button primary>Create Exercise</Button></Link>
           <Row>
             <Col md={12} lg={8}>
               <ExerciseHeader>Sort</ExerciseHeader>

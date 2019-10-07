@@ -7,6 +7,8 @@ import FrontPage from './FrontPage';
 import Header from './Header';
 import Programs from './programs/Programs';
 import Exercises from './exercises/Exercises';
+import ExerciseCreate from './exercises/ExerciseCreate';
+import ExerciseEdit from './exercises/ExerciseEdit';
 import ProgramCreate from './programs/programCreate/ProgramCreate';
 import Workouts from './workouts/Workouts';
 
@@ -22,6 +24,8 @@ const App = () => {
             <Route path="/programs/new" exact component={ProgramCreate} />
             <Route path="/programs/edit/:id" exact component={ProgramCreate} />
             <Route path="/exercises" exact component={Exercises} />
+            <Route path="/exercises/new" exact component={ExerciseCreate} />
+            <Route path="/exercises/edit/:id" exact component={ExerciseEdit} />
             <Route path="/workouts" exact component={Workouts} />
           </Switch>
         </Container>

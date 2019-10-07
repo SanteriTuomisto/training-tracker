@@ -1,12 +1,11 @@
 import api from '../apis/api';
-import { reset } from 'redux-form';
 import history from '../history';
 
 export const createExercise = (formValues) => async (dispatch) => {
   const response = await api.post('/exercises', { ...formValues });
 
   dispatch({ type: 'CREATE_EXERCISE', payload: response.data });
-  dispatch(reset('exerciseForm'));
+  history.push('/exercises');
 };
 
 export const fetchExercises = () => async dispatch => {
@@ -15,10 +14,23 @@ export const fetchExercises = () => async dispatch => {
   dispatch({ type: 'FETCH_EXERCISES', payload: response.data })
 };
 
+export const fetchExercise = (id) => async dispatch => {
+  const response = await api.get(`/exercises/${id}`);
+
+  dispatch({ type: 'FETCH_EXERCISE', payload: response.data })
+};
+
 export const deleteExercise = (id) => async dispatch => {
   await api.delete(`/exercises/${id}`);
 
   dispatch({ type: 'DELETE_EXERCISE', payload: id });
+};
+
+export const editExercise = (id, data) =>  async dispatch => {
+  const response = await api.patch(`/exercises/${id}`, data);
+
+  dispatch({ type: 'EDIT_EXERCISE', payload: response.data });
+  history.push('/exercises');
 };
 
 export const fetchPrograms = () => async dispatch => {
