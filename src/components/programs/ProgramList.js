@@ -131,6 +131,8 @@ class ProgramList extends React.Component {
     return (
       <div>
         <ExerciseToolsContainer>
+          <Link to="/programs/new"><Button primary>Create Program</Button></Link>
+          <hr/>
           <Row>
             <Col md={12} lg={8}>
               <ExerciseHeader>Sort</ExerciseHeader>

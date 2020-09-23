@@ -1,23 +1,20 @@
 import React from 'react';
 import { Button, Header, FrontPageContent, FrontPageButtons } from './StyledComponents';
 import { Link } from 'react-router-dom';
-import { FaDumbbell } from "react-icons/fa";
+import backgroundImage from "./../images/bgimg.jpg";
 
 class FrontPage extends React.Component {
 
   componentDidMount() {
-    // todo: better way: helmet?
-    // temp
-    document.body.style = "background-size: cover; background-image: url('https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');";
+    document.body.style = `background-size: cover; background-image: url(${backgroundImage}); background-repeat: no-repeat;`;
   }
 
   render() {
     return (
       <FrontPageContent>
 
-        <Header yellow center large marginTop animation><FaDumbbell /></Header>
-        <Header yellow center large animation>TRAINING</Header>
-        <Header yellow center large animation>TRACKER</Header>
+        <Header yellow center fontSize="6em" marginTop="90px" marginBottom="-30px" animation>TRAINING</Header>
+        <Header yellow center fontSize="8em" shadow animation marginBottom="70px">TRACKER</Header>
         
         <FrontPageButtons aria-label="FrontPageButtons">
           <Link to="/programs">

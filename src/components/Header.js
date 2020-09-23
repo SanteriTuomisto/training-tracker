@@ -12,7 +12,7 @@ class Header extends React.Component {
           <Col>
             <StyledLink to="/"><NavItemLogo><FaDumbbell /></NavItemLogo></StyledLink>
           </Col>
-          <Col>
+          <Col md={{ offset: 3 }}>
           <StyledLink to="/programs"><NavItem>PROGRAMS</NavItem></StyledLink>          
           </Col>
           <Col>
@@ -20,6 +20,8 @@ class Header extends React.Component {
           </Col>
           <Col>
           <StyledLink to="/workouts"><NavItem>WORKOUTS</NavItem></StyledLink>
+          </Col>
+          <Col>
           </Col>
         </Row>
       </Nav>

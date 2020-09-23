@@ -1,19 +1,19 @@
 import React from 'react';
-import { Container, Header, ExerciseToolsContainer } from '../StyledComponents';
+import { Button, Container, Header, ExerciseToolsContainer } from '../StyledComponents';
+import { Link } from 'react-router-dom';
 
-class Workouts extends React.Component {
+class Workouts extends React.Component {  
   componentDidMount() {
-    // todo betteR?
-    document.body.style = "background-size: cover; background-image: url('https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');";
+    document.body.style = `background-color: gray;`;
   }
-  
+
   render() {
     return (
       <div>
-        <Header yellow center large marginTop animation>WORKOUTS</Header>
-        <Container transparent marginBottom marginTop>
+        <Header yellow center fontSize="4em" marginTop="20px" animation>WORKOUTS</Header>
+        <Container transparent marginBottom>
           <ExerciseToolsContainer>
-            TODO
+            <Link to="/workouts/new"><Button primary>Add Workout</Button></Link>
           </ExerciseToolsContainer>
         </Container>
       </div>

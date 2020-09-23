@@ -11,10 +11,13 @@ import ExerciseCreate from './exercises/ExerciseCreate';
 import ExerciseEdit from './exercises/ExerciseEdit';
 import ProgramCreate from './programs/programCreate/ProgramCreate';
 import Workouts from './workouts/Workouts';
+import WorkoutCreate from './workouts/WorkoutCreate';
+
+import { Main } from './StyledComponents';
 
 const App = () => {
   return (
-    <div>
+    <Main>
         <Router history={history}>
         <Header />
         <Container>
@@ -27,10 +30,11 @@ const App = () => {
             <Route path="/exercises/new" exact component={ExerciseCreate} />
             <Route path="/exercises/edit/:id" exact component={ExerciseEdit} />
             <Route path="/workouts" exact component={Workouts} />
+            <Route path="/workouts/new" exact component={WorkoutCreate} />
           </Switch>
         </Container>
       </Router>
-    </div>
+    </Main>
   );
 };
 

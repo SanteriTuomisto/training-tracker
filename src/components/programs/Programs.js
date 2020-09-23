@@ -1,23 +1,19 @@
 import React from 'react';
 import ProgramList from './ProgramList';
-import { Button, Header, Container } from '../StyledComponents';
-import { Link } from 'react-router-dom';
+import { Header, Container } from '../StyledComponents';
 
 // TODO editProgram -> fetchProgram (like with exercises)
 
 class Programs extends React.Component {
-
   componentDidMount() {
-    // TODO better?
-    document.body.style = "background-image: url('https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');";
+    document.body.style = `background-color: gray;`;
   }
 
   render() {
     return (
       <div>
-        <Header yellow center large marginTop animation>PROGRAMS</Header>
-        <Container transparent marginBottom marginTop>
-          <Link to="/programs/new"><Button primary>Create Program</Button></Link>
+        <Header yellow center fontSize="4em" marginTop="10px" animation>PROGRAMS</Header>
+        <Container transparent marginBottom>
           <ProgramList />
         </Container>
       </div>  

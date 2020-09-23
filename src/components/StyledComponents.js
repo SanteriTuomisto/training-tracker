@@ -81,15 +81,12 @@ export const ExerciseToolsContainer = styled.div`
   color: #ffbc00;
   padding: 15px 20px 12px 20px;
   border-radius: 3px;
-  box-shadow: 0px 5px 20px 0px #212121;
-  backdrop-filter: 
 `;
 
 export const ExerciseContainer = styled.div`
   background-color: rgba(23, 23, 23, 0.93);
   padding-top: 20px;
   margin-top: 30px;
-  box-shadow: 0px 5px 20px 0px #212121;
   border-radius: 3px;
 `;
 
@@ -137,13 +134,14 @@ export const ContainerAddNew= styled(Container)`
 `;
 
 export const Header = styled.h1`
-  margin-bottom: 10px;
+  margin-top: ${props => (props.marginTop || '0px;' )}; 
+  margin-bottom: ${props => props.marginBottom || '-10px'};
   animation: ${props => (props.animation ? 'tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;' : '' )}; 
   color: ${props => (props.yellow ? '#ffbc00' : 'black' )};
   text-align: ${props => (props.center ? 'center' : '' )};
-  font-size: ${props => (props.large ? '5em' : '' )};
-  margin-top: ${props => (props.marginTop ? '70px' : '' )}; 
+  font-size: ${props => (props.fontSize || '' )};
   letter-spacing: 10px;
+  text-shadow: ${props => (props.shadow ? '-20px -11px 8px rgb(0 0 0 / 76%)' : '')};
 
   @keyframes tracking-in-expand {
     0% {
@@ -232,17 +230,17 @@ export const Nav = styled.div`
 
 export const NavItem = styled.div`
   animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-  color: #ffbc00;
+  color: black;
   padding-top: 40px;
-  padding-bottom: 40px;
-  font-size: 20px;
-  letter-spacing: 5px;
+  padding-bottom: 20px;
+  font-size: 25px;
+  letter-spacing: 1px;
   text-align: center;
   font-weight: 300;
 
   &:hover {
-    color: black;
-    background-color: #ffbc00;
+    color: #ffbc00;
+    background-color: black;
     transition: color 1s ease;
     transition: background 1s ease;
   }
@@ -264,7 +262,7 @@ export const NavItem = styled.div`
 export const NavItemLogo = styled.div`
   color: white;
   padding-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   font-size: 40px;
   letter-spacing: 5px;
   text-align: center;
@@ -323,4 +321,8 @@ export const FrontPageButtons = styled(ButtonGroup)`
       opacity: 1;
     }
   }
+`;
+
+export const Main = styled.div`
+  min-height: 100vh;
 `;

@@ -2,25 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ExerciseForm from './ExerciseForm';
 import { createExercise } from '../../actions';
-import { ExerciseHeader, ExerciseToolsContainer } from '../StyledComponents';
+import { ExerciseToolsContainer, Header } from '../StyledComponents';
 
 class ExerciseCreate extends React.Component {
-
-  componentDidMount() {
-    // todo betteR?
-    document.body.style = "background-size: cover; background-image: url('https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');";
-  }
-
   onSubmit = (formValues) => {
     this.props.createExercise(formValues);
   };
 
+  componentDidMount() {
+    document.body.style = `background-color: gray;`;
+  }
+
   render() {
     return (
-      <ExerciseToolsContainer>
-        <ExerciseHeader>Create exercise</ExerciseHeader>
-        <ExerciseForm onSubmit={this.onSubmit} />
-      </ExerciseToolsContainer>
+      <div>
+        <Header yellow center fontSize="3em" marginTop="10px" marginBottom="20px" animation>CREATE EXERCISE</Header>
+        <ExerciseToolsContainer>
+          <ExerciseForm onSubmit={this.onSubmit} />
+        </ExerciseToolsContainer>
+      </div>
     );
   }
 }

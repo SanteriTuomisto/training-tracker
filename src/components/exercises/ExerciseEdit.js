@@ -2,14 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ExerciseForm from './ExerciseForm';
 import { fetchExercise, editExercise } from '../../actions';
-import { ExerciseHeader, ExerciseToolsContainer } from '../StyledComponents';
+import { Header, ExerciseToolsContainer } from '../StyledComponents';
 import _ from 'lodash';
 
 class ExerciseEdit extends React.Component {
   componentDidMount() {
-    // TODO better?
-    document.body.style = "background-size: cover; background-image: url('https://images.pexels.com/photos/949129/pexels-photo-949129.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');";
-  
     this.props.fetchExercise(this.props.match.params.id);
   }
 
@@ -26,10 +23,12 @@ class ExerciseEdit extends React.Component {
 
   render() {
     return (
-      <ExerciseToolsContainer>
-        <ExerciseHeader>Edit exercise</ExerciseHeader>
-        {this.renderForm()}
-      </ExerciseToolsContainer>
+      <div>
+        <Header yellow center fontSize="3em" marginTop="10px" marginBottom="20px" animation>EDIT EXERCISE</Header>
+        <ExerciseToolsContainer>
+          {this.renderForm()}
+        </ExerciseToolsContainer>
+      </div>
     );
   }
 }

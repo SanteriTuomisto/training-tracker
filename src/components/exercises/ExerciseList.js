@@ -143,6 +143,7 @@ class ExerciseList extends React.Component {
       <div>
         <ExerciseToolsContainer>
           <Link to="/exercises/new"><Button primary>Create Exercise</Button></Link>
+          <hr/>
           <Row>
             <Col md={12} lg={8}>
               <ExerciseHeader>Sort</ExerciseHeader>
