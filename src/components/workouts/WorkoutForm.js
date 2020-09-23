@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label, Input, ExerciseHeader, ExerciseContainer, ExerciseContainerInner } from '../StyledComponents';
+import { Label, Input, ExerciseHeader, WorkoutContainer, ExerciseContainerInner } from '../StyledComponents';
 import Select from 'react-select';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -11,8 +11,25 @@ class WorkoutForm extends React.Component {
     selectedProgram: null,
     programs: [],
     selectedWorkout: null,
-    workouts: []
+    workouts: [],
+    date: ''
   };
+
+workout = [
+  {
+    "id": 1,
+    "date": 230920,
+    "program": 1,
+    "workout": 1,
+    "exercises": {
+      "1": {
+        "exerciseId": 1,
+        "reps": [8, 8, 3],
+        "weights": [100, 100, 90]
+      }
+    }
+  }
+];
 
   async componentDidMount() {
     this.props.fetchExercises();
@@ -74,32 +91,32 @@ class WorkoutForm extends React.Component {
         var exerciseDetails = this.props.exercises.find(e => { return e.id === exercise.exerciseId });
         if (exerciseDetails !== null) {
           return (
-            <Col key={exerciseId}>
+            <Col key={exerciseId} md={12}>
               <ExerciseContainerInner>
                 <ExerciseHeader>{exerciseDetails.title}</ExerciseHeader>
                 <div>Sets: {exercise.sets} | Reps: {exercise.reps}</div>
-                <ExerciseContainer>
+                <WorkoutContainer marginTop="20px" paddingTop="10px" paddingBottom="15px">
                   <Row>
                     <Col>
                       <Label>Reps</Label>
                     </Col>
                     <Col>
-                      <Label>Weight</Label>
+                      <Label>Weight (kg)</Label>
                     </Col>
                   </Row>
-                  {this.renderExercise(exercise.sets)}
-                </ExerciseContainer>
+                  {this.renderExercise(exercise.sets, exerciseId)}
+                </WorkoutContainer>
               </ExerciseContainerInner>
             </Col>
           );
         }
         else {
           return (
-            <Col key={exerciseId}>
+            <Col key={exerciseId} md={12}>
               <ExerciseContainerInner>
                 <ExerciseHeader>Empty</ExerciseHeader>
                 <div>Sets: {exercise.sets} | Reps: {exercise.reps}</div>
-                <ExerciseContainer>
+                <WorkoutContainer>
                   <Row>
                     <Col>
                       <Label>Reps</Label>
@@ -109,7 +126,7 @@ class WorkoutForm extends React.Component {
                     </Col>
                   </Row>
                   {this.renderExercise(exercise.sets)}
-                </ExerciseContainer>
+                </WorkoutContainer>
               </ExerciseContainerInner>
             </Col>
           );
@@ -119,7 +136,8 @@ class WorkoutForm extends React.Component {
     else return null;
   }
 
-  renderExercise(sets) {
+  // TODO kontrolloi nää inputfieldit
+  renderExercise(sets, exerciseId) {
     var fields = [];
     for (var i = 0; i < sets; i++) {
       fields.push(
@@ -153,6 +171,13 @@ class WorkoutForm extends React.Component {
             options={this.state.workouts} 
             value={this.state.workouts[this.state.selectedWorkout]}
             onChange={this.handleWorkoutChange}
+        />
+        <hr />
+        <Label>Workout date</Label>
+        <Input 
+          type="date" 
+          value={this.state.date} 
+          onChange={event => this.setState({ date: event.target.value })}
         />
         <hr />
         <Row>

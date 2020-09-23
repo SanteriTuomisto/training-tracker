@@ -58,3 +58,16 @@ export const editProgram = (id, data) =>  async dispatch => {
   dispatch({ type: 'EDIT_PROGRAM', payload: response.data });
   history.push('/programs');
 };
+
+export const createWorkout = (data) => async (dispatch) => {
+  const response = await api.post('/workouts', { ...data });
+
+  dispatch({ type: 'CREATE_WORKOUT', payload: response.data });
+  history.push('/workouts');
+};
+
+export const fetchWorkouts = () => async dispatch => {
+  const response = await api.get('/workouts');
+
+  dispatch({ type: 'FETCH_WORKOUTS', payload: response.data })
+};

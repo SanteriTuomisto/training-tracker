@@ -81,12 +81,22 @@ export const ExerciseToolsContainer = styled.div`
   color: #ffbc00;
   padding: 15px 20px 12px 20px;
   border-radius: 3px;
+  margin-bottom: ${props => (props.marginBottom || '0px' )}; 
 `;
 
 export const ExerciseContainer = styled.div`
   background-color: rgba(23, 23, 23, 0.93);
   padding-top: 20px;
   margin-top: 30px;
+  border-radius: 3px;
+`;
+
+export const WorkoutContainer = styled.div`
+  background-color: rgba(23, 23, 23, 0.93);
+  padding-top: ${props => (props.paddingTop || '0px' )}; 
+  padding-bottom: ${props => (props.paddingBottom || '0px' )}; 
+  margin-top: ${props => (props.marginTop || '0px' )}; 
+  margin-bottom: ${props => (props.marginBottom || '0px' )}; 
   border-radius: 3px;
 `;
 

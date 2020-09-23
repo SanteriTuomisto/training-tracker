@@ -11,7 +11,7 @@ class WorkoutCreate extends React.Component {
     return (
       <div>
         <Header yellow center fontSize="3em" marginTop="10px" marginBottom="20px" animation>ADD WORKOUT</Header>
-        <ExerciseToolsContainer>
+        <ExerciseToolsContainer marginBottom="40px">
           <WorkoutForm onSubmit={this.onSubmit} />
         </ExerciseToolsContainer>
       </div>
